@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "earthly-vim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1650649012,
+        "narHash": "sha256-KOlYUXasMYHMUY8uthiwPh2uLZaQSI76anJD0W1+qes=",
+        "owner": "earthly",
+        "repo": "earthly.vim",
+        "rev": "9402908f41c5165fa69317da9fe1c47ea5f9e5dd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "earthly",
+        "repo": "earthly.vim",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "locked": {
         "lastModified": 1659877975,
@@ -32,25 +48,9 @@
     },
     "root": {
       "inputs": {
+        "earthly-vim": "earthly-vim",
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs",
-        "which-key": "which-key"
-      }
-    },
-    "which-key": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1663139160,
-        "narHash": "sha256-VST2WwgHakFPDsK4ZOox8K6vEGGfYyzWLvgD9fLRssE=",
-        "owner": "folke",
-        "repo": "which-key.nvim",
-        "rev": "66e69bad5151cfaefb3a1cf54906574a0d19749b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "folke",
-        "repo": "which-key.nvim",
-        "type": "github"
+        "nixpkgs": "nixpkgs"
       }
     }
   },
