@@ -3,6 +3,8 @@ require('nvim-web-devicons').setup()
 require('colorizer').setup()
 -- :DiffviewOpen / DiffviewClose
 require('diffview').setup()
+require('spellsitter').setup()
+require('todo-comments').setup()
 
 require('nvim-tree').setup {
   --open_on_setup = true,
@@ -28,7 +30,7 @@ require('fzf-lua').setup {
 require('gitsigns').setup {
   signs = {
     -- source: https://en.wikipedia.org/wiki/Box-drawing_character
-    add          = {hl = 'GitSignsAdd'   , text = '┃', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+    add          = {hl = 'GitSignsAdd'   , text = '┃', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'   },
     change       = {hl = 'GitSignsChange', text = '┃', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
     delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
     topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
@@ -115,5 +117,3 @@ require('lualine').setup {
 require('indent_blankline').setup {
   show_current_context = true,
 }
-
-require('spellsitter').setup()

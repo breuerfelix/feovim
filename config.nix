@@ -70,6 +70,7 @@
     "clever-f-vim"
     "nvim-tree-lua"
     "vista-vim"
+    "todo-comments-nvim"
 
     # highlights current variable with underline
     "nvim-cursorline"
@@ -116,7 +117,6 @@
     "vimwiki"
     #vim-grammarous
     #"vim-startuptime"
-    #"vim-todo"
     #goyo-vim
     #limelight-vim
     #"rest.nvim" # http client
@@ -130,15 +130,15 @@
   # plugins loaded optionally
   optPlugins = [ ];
 
-  neovimConfig = with pkgs; builtins.concatStringsSep "\n" [
-    (lib.strings.fileContents ./base.vim)
-    (lib.strings.fileContents ./plugins.vim)
-    (lib.strings.fileContents ./lsp.vim)
+  neovimConfig = with pkgs.lib.strings; builtins.concatStringsSep "\n" [
+    (fileContents ./base.vim)
+    (fileContents ./plugins.vim)
+    (fileContents ./lsp.vim)
     ''
       lua << EOF
-      ${lib.strings.fileContents ./config.lua}
-      ${lib.strings.fileContents ./lsp.lua}
-      ${lib.strings.fileContents ./debug.lua}
+      ${fileContents ./plugins.lua}
+      ${fileContents ./lsp.lua}
+      ${fileContents ./debug.lua}
       EOF
     ''
   ];
