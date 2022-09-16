@@ -14,6 +14,18 @@ Run anywhere (if nix is installed):
 nix run github:breuerfelix/feovim# .
 ```
 
+Used as a package:
+```nix
+# inputs from flakes
+{ inputs, ... }: {
+  nixpkgs.overlays = [
+    (self: super: {
+      neovim = inputs.feovim.packages.${self.system}.default;
+    })
+  ];
+}
+```
+
 ## Update Plugins
 
 ```bash
