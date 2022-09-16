@@ -89,7 +89,6 @@ Nix flakes behave strange on unstaged files.
           feovim = wrapNeovim neovim-unwrapped {
             viAlias = true;
             vimAlias = true;
-            #withNodesJs = true; # TODO why is this one unexpected?
             withPython3 = true;
             withRuby = true;
             extraMakeWrapperArgs = ''--prefix PATH : "${lib.makeBinPath extraPackages}"'';
@@ -116,7 +115,6 @@ Nix flakes behave strange on unstaged files.
             };
           };
         };
-
       }
     );
 }
