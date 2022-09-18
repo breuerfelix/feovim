@@ -14,7 +14,8 @@
 
     # language servers
     rnix-lsp
-    #terraform-ls terraform-lsp # TODO fix build
+    #terraform-ls # FIX fix build
+    #terraform-lsp # FIX fix build
     nodePackages.typescript
     nodePackages.typescript-language-server
     gopls
@@ -46,14 +47,14 @@
     "friendly-snippets" # snippet collection for all languages
 
     "delimitMate" # auto bracket
-    # TODO fix this
+    # FIX this
     #"lsp_extensions-nvim" # rust inline hints
     "lsp_signature-nvim"
 
     # syntax highlighting
-    "nvim-treesitter"
+    #"nvim-treesitter" # this package is overlayed with all grammar
     "nvim-ts-rainbow" # bracket highlighting
-    #"nvim-treesitter-context" # TODO fix this
+    #"nvim-treesitter-context" # FIX
     "editorconfig-vim"
     "earthly-vim"
     "vim-helm"

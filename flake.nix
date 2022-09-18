@@ -12,7 +12,11 @@
   outputs = { self, nixpkgs, flake-utils, ... }@inputs:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          config = { allowUnfree = true; };
+        };
+
         config = import ./config.nix { inherit pkgs; };
 
         # installs a vim plugin from git
@@ -41,14 +45,17 @@
           feovim = wrapNeovim neovim-unwrapped {
             viAlias = true;
             vimAlias = true;
-            #withNodesJs = true; # TODO why is this one unexpected?
+            #withNodesJs = true; # FIX: why is this an unexpected argument?
             withPython3 = true;
             withRuby = true;
             extraMakeWrapperArgs = ''--prefix PATH : "${lib.makeBinPath extraPackages}"'';
             configure = {
               customRC = neovimConfig;
-              packages.myVimPackage = with pkgs; {
-                start = pluginMapper startPlugins;
+              packages.myVimPackage = with pkgs.vimPlugins; {
+                start = pluginMapper startPlugins ++ [
+                  # TODO put this into overlay / config.nix
+                  (nvim-treesitter.withPlugins (plugins: tree-sitter.allGrammars))
+                ];
                 opt = pluginMapper optPlugins;
               };
             };

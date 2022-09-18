@@ -49,21 +49,9 @@ require('gitsigns').setup {
 }
 
 require('nvim-treesitter.configs').setup {
-  -- "all", or a list
-  -- TODO maybe use all?
-  ensure_installed = {
-    "bash", "c", "c_sharp",
-    "cpp", "css", "dart", "dockerfile",
-    "go", "gomod", "gowork",
-    "graphql", "hcl", "html", "http",
-    "java", "javascript", "jsdoc", "json",
-    "json5", "kotlin", "latex", "lua", "make",
-    "markdown", "nix", "proto", "python", "rust",
-    "ruby", "scss", "svelte", "toml", "tsx",
-    "typescript", "vim", "vue", "yaml",
-  },
-  -- the default path is read only due to nix
-  parser_install_dir = "~/.local/share/nvim/site",
+  -- they are managed by nix
+  auto_install = false,
+  --ensure_installed = "all",
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
@@ -76,7 +64,6 @@ require('nvim-treesitter.configs').setup {
     max_file_lines = 1000,
   },
 }
-vim.opt.runtimepath:append("~/.local/share/nvim/site")
 
 -- TODO fix
 --require('treesitter-context').setup {
