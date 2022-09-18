@@ -62,7 +62,7 @@
     # utilities
     #"popup-nvim"
     "plenary-nvim"
-    #"telescope-nvim"
+    "telescope-nvim"
     "nvim-web-devicons"
 
     # navigation

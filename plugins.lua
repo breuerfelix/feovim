@@ -4,7 +4,16 @@ require('colorizer').setup()
 -- :DiffviewOpen / DiffviewClose
 require('diffview').setup()
 require('spellsitter').setup()
-require('todo-comments').setup()
+require('telescope').setup()
+
+require('todo-comments').setup {
+  search = {
+    pattern = [[\b(KEYWORDS)\b]],
+  },
+  highlight = {
+    pattern = [[.*<(KEYWORDS)\s*]],
+  },
+}
 
 require('nvim-tree').setup {
   --open_on_setup = true,
