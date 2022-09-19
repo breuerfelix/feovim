@@ -15,24 +15,15 @@ nmap <leader>ls :s/"/'/g<bar>:noh<CR>
 nmap <leader>lc :%s/\t/  /g<CR>
 nmap <leader>lg :GrammarousCheck<CR>
 nmap <leader>lr :GrammarousReset<CR>
-nmap <leader>lt :OpenTodo<CR>
+nmap <leader>lt :TodoLocList<CR>
 nmap <leader>lp :echo expand('%:p')<CR>
 lua require('which-key').register({ ['<leader>l'] = { name = 'linting / syntax' } })
-
-let g:spacevim_todo_labels = [
-\  'FIXME',
-\  'TODO',
-\]
 
 "let g:indentLine_char = '|'
 "let g:indentLine_char = '│'
 "let g:indent_blankline_use_treesitter = v:true
 
 highlight IndentBlanklineChar guifg=grey25 gui=nocombine
-
-"copilot
-"imap <silent><script><expr> <C-Space> copilot#Accept("\<CR>")
-"let g:copilot_no_tab_map = v:true
 
 "improve writing
 function! s:goyo_enter()

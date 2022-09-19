@@ -54,7 +54,11 @@ Nix flakes behave strange on unstaged files.
   outputs = { self, nixpkgs, flake-utils, ... }@inputs:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          # enable all packages
+          config = { allowUnfree = true; };
+        };
 
         # define packages that need to be available in the neovim path
         # for example language servers

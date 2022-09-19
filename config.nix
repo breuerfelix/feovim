@@ -9,20 +9,20 @@
     ripgrep
     fd
     fzf # fzf
-    nodejs # github copilot
     universal-ctags # vista
 
     # language servers
     rnix-lsp
-    #terraform-ls # FIX fix build
-    #terraform-lsp # FIX fix build
+    terraform-ls
     nodePackages.typescript
     nodePackages.typescript-language-server
     gopls
     texlab
     nodePackages.pyright
-    black
     rust-analyzer
+
+    # formatter
+    #black
 
     # debugging
     delve # golang
@@ -61,7 +61,6 @@
     "spellsitter-nvim" # spellchecker for comments
 
     # utilities
-    #"popup-nvim"
     "plenary-nvim"
     "telescope-nvim"
     "nvim-web-devicons"
@@ -106,8 +105,7 @@
     "codi-vim"
 
     # formatters
-    # TODO fix this
-    #"black"
+    #"black-nvim"
 
     # debugging
     "nvim-dap"

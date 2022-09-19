@@ -7,6 +7,7 @@
 
     # define plugin sources from git or use package from nixpkgs instead
     "earthly-vim" = { url = "github:earthly/earthly.vim"; flake = false; };
+    #"black-nvim" = { url = "github:averms/black-nvim"; flake = false; };
   };
 
   outputs = { self, nixpkgs, flake-utils, ... }@inputs:

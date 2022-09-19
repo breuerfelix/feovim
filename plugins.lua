@@ -77,13 +77,6 @@ require('bufferline').setup {
     show_buffer_close_icons = false,
     separator_style = "thick",
   },
-  -- TODO change highlights based on base16
-  --highlights = {
-    --fill = {
-        --guifg = '#3B4252',
-        --guibg = '#3B4252',
-    --},
-  --},
 }
 
 require('nvim-gps').setup({

@@ -80,7 +80,8 @@ autocmd filetype javascript,typescript nnoremap <leader>er :VimuxRunCommand("nod
 autocmd filetype go noremap <leader>er :VimuxRunCommand("go run .")<CR>
 
 "formatter
-"autocmd filetype python noremap <leader>f :silent execute \"!black -q %\" | edit!<CR>
+"FIX: Black() not found
+"autocmd filetype python noremap <leader>f <cmd>call Black()<CR>
 
 "true colors
 set termguicolors
