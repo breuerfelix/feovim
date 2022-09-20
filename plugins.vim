@@ -48,35 +48,35 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 imap <expr> <C-l> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 smap <expr> <C-l> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 
-call wilder#setup({
-  \ 'modes': [':', '/', '?'],
-  \ 'next_key': '<C-j>',
-  \ 'previous_key': '<C-k>',
-  \ 'accept_key': '<Down>',
-  \ 'reject_key': '<Up>',
-  \ })
+"call wilder#setup({
+  "\ 'modes': [':', '/', '?'],
+  "\ 'next_key': '<C-j>',
+  "\ 'previous_key': '<C-k>',
+  "\ 'accept_key': '<Down>',
+  "\ 'reject_key': '<Up>',
+  "\ })
 
-call wilder#set_option('pipeline', [
-  \   wilder#branch(
-  \     wilder#cmdline_pipeline({
-  \       'language': 'python',
-  \       'fuzzy': 1,
-  \     }),
-  \     wilder#python_search_pipeline({
-  \       'pattern': wilder#python_fuzzy_pattern(),
-  \       'sorter': wilder#python_difflib_sorter(),
-  \       'engine': 're',
-  \     }),
-  \   ),
-  \ ])
+"call wilder#set_option('pipeline', [
+  "\   wilder#branch(
+  "\     wilder#cmdline_pipeline({
+  "\       'language': 'python',
+  "\       'fuzzy': 1,
+  "\     }),
+  "\     wilder#python_search_pipeline({
+  "\       'pattern': wilder#python_fuzzy_pattern(),
+  "\       'sorter': wilder#python_difflib_sorter(),
+  "\       'engine': 're',
+  "\     }),
+  "\   ),
+  "\ ])
 
-call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
-  \ 'highlighter': wilder#basic_highlighter(),
-  \ 'border': 'single',
-  \ 'left': [
-  \   ' ', wilder#popupmenu_devicons()
-  \ ],
-  \ })))
+"call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
+  "\ 'highlighter': wilder#basic_highlighter(),
+  "\ 'border': 'single',
+  "\ 'left': [
+  "\   ' ', wilder#popupmenu_devicons()
+  "\ ],
+  "\ })))
 
 "better wildmenu
 set wildmenu

@@ -94,7 +94,7 @@
     "diffview-nvim"
 
     # wildmenu for commands
-    "wilder-nvim"
+    #"wilder-nvim"
 
     "vim-sleuth"
     "vim-smoothie"
