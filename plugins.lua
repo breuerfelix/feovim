@@ -65,11 +65,10 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
--- TODO fix
---require('treesitter-context').setup {
-  --enable = true,
-  --throttle = true,
---}
+require('treesitter-context').setup {
+  enable = true,
+  throttle = true,
+}
 
 require('bufferline').setup {
   options = {

@@ -10,6 +10,7 @@
     fd
     fzf # fzf
     universal-ctags # vista
+    gh # github cli for cmp_git
 
     # language servers
     rnix-lsp
@@ -37,24 +38,20 @@
     "nvim-cmp"
     "cmp-nvim-lsp"
     "cmp-path"
-    #"cmp-buffer"
-    #"cmp-nvim-lsp-document-symbol" # TODO fix it
     "cmp-git"
+    "lsp_signature-nvim"
 
     # snippets are needed for many language servers
     "cmp-vsnip"
     "vim-vsnip"
     "friendly-snippets" # snippet collection for all languages
 
-    "delimitMate" # auto bracket
-    # FIX this
-    #"lsp_extensions-nvim" # rust inline hints
-    "lsp_signature-nvim"
 
     # syntax highlighting
     #"nvim-treesitter" # this package is overlayed with all grammar
     "nvim-ts-rainbow" # bracket highlighting
-    #"nvim-treesitter-context" # FIX
+    "nvim-treesitter-context"
+    "delimitMate" # auto bracket
     "editorconfig-vim"
     "earthly-vim"
     "vim-helm"
@@ -105,18 +102,16 @@
     "codi-vim"
 
     # formatters
-    #"black-nvim"
+    #"black-nvim" # FIX
 
     # debugging
     "nvim-dap"
 
-    #"copilot-vim"
-
-    # TODO lazyload
+    # could be lazy loaded
     "vimwiki"
-    #vim-grammarous
+    #"vim-grammarous"
     #"vim-startuptime"
-    #goyo-vim
+    #"goyo-vim"
     #limelight-vim
     #"rest.nvim" # http client
 
