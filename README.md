@@ -91,21 +91,20 @@ Nix flakes behave strange on unstaged files.
           (name: if lib.hasAttr name vimPlugins then lib.getAttr name vimPlugins else (plugin name))
           plugins;
       in
-      {
-        apps = rec {
-          default = nvim;
-          nvim = flake-utils.lib.mkApp {
-            drv = self.packages.${system}.default;
+      rec {
+        apps = {
+          default = flake-utils.lib.mkApp {
+            drv = packages.default;
             exePath = "/bin/nvim";
           };
         };
 
-        packages = with pkgs; rec {
-          default = feovim;
-          feovim = wrapNeovim neovim-unwrapped {
+        packages = with pkgs; {
+          default = wrapNeovim neovim-unwrapped {
             viAlias = true;
             vimAlias = true;
             withPython3 = true;
+            withNodeJs = true;
             withRuby = true;
             extraMakeWrapperArgs = ''--prefix PATH : "${lib.makeBinPath extraPackages}"'';
             configure = {

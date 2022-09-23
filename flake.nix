@@ -32,19 +32,19 @@
           (name: if lib.hasAttr name vimPlugins then lib.getAttr name vimPlugins else (plugin name))
           plugins;
       in
-      with config; {
-        apps = rec {
+      with config; rec {
+        apps = {
           default = flake-utils.lib.mkApp {
-            drv = self.packages.${system}.default;
+            drv = packages.default;
             exePath = "/bin/nvim";
           };
         };
 
-        packages = with pkgs; rec {
+        packages = with pkgs; {
           default = wrapNeovim neovim-unwrapped {
             viAlias = true;
             vimAlias = true;
-            #withNodesJs = true; # FIX: why is this an unexpected argument?
+            withNodeJs = true;
             withPython3 = true;
             withRuby = true;
             extraMakeWrapperArgs = ''--prefix PATH : "${lib.makeBinPath extraPackages}"'';
