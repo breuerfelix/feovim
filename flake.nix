@@ -34,16 +34,14 @@
       in
       with config; {
         apps = rec {
-          default = nvim;
-          nvim = flake-utils.lib.mkApp {
+          default = flake-utils.lib.mkApp {
             drv = self.packages.${system}.default;
             exePath = "/bin/nvim";
           };
         };
 
         packages = with pkgs; rec {
-          default = feovim;
-          feovim = wrapNeovim neovim-unwrapped {
+          default = wrapNeovim neovim-unwrapped {
             viAlias = true;
             vimAlias = true;
             #withNodesJs = true; # FIX: why is this an unexpected argument?
