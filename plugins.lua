@@ -5,6 +5,7 @@ require('colorizer').setup()
 require('diffview').setup()
 require('spellsitter').setup()
 require('telescope').setup()
+require('illuminate').configure()
 
 require('todo-comments').setup {
   search = {
@@ -105,3 +106,4 @@ require('lualine').setup {
 require('indent_blankline').setup {
   show_current_context = true,
 }
+

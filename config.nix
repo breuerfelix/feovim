@@ -56,6 +56,7 @@
     "earthly-vim"
     "vim-helm"
     "spellsitter-nvim" # spellchecker for comments
+    "vim-illuminate" # highlight other words under cursor
 
     # utilities
     "plenary-nvim"
