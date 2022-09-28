@@ -91,7 +91,7 @@ require('nvim-gps').setup({
 local gps = require('nvim-gps')
 require('lualine').setup {
   options = {
-    theme = "nord",
+    theme = 'tokyonight',
     -- disable powerline
     section_separators = '',
     component_separators = '',

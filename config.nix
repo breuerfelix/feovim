@@ -119,8 +119,6 @@
 
     # colorschemes
     "tokyonight-nvim"
-    "kanagawa-nvim"
-    "ayu-vim"
   ];
 
   # plugins loaded optionally

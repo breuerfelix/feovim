@@ -154,28 +154,21 @@ noremap <leader>i <C-i>zz
 "filetypes
 au BufRead,BufNewFile *.nix set filetype=nix
 
-set background=dark
-let g:tokyonight_style = "storm"
-colorscheme tokyonight
-"TODO find colorscheme for tmux and alacritty
-"colorscheme kanagawa
-let ayucolor="mirage"
-"colorscheme ayu
-
 "
 " THEMING
 "
+"
+set background=dark
+colorscheme tokyonight-night
 
 "override colorscheme
 "enable transparent background
 "highlight Normal ctermbg=NONE guibg=NONE
 
 "render whitespace softer than comments
-highlight NonText guifg=grey22
-highlight Whitespace guifg=grey22
-highlight SpecialKey guifg=grey22
-"TODO choose a good color for comments
-highlight Comment guifg=grey
+highlight NonText guifg=#262a40
+highlight Whitespace guifg=#262a40
+highlight SpecialKey guifg=#262a40
 
 "highlight only one character when line too long
 highlight ColorColumn ctermbg=grey guibg=grey25
