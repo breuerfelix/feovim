@@ -80,7 +80,7 @@ local servers = {
   tsserver = {},
   gopls = {},
   rnix = {},
-  --"terraformls",
+  --terraformls = {},
   texlab = {},
   pyright = {},
   rust_analyzer = {},
