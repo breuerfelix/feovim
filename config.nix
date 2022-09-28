@@ -21,6 +21,7 @@
     texlab
     nodePackages.pyright
     rust-analyzer
+    sumneko-lua-language-server
 
     # formatter
     #black

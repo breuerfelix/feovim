@@ -5,8 +5,8 @@ dap.adapters.go = function(callback, config)
   local pid_or_err
   local port = 38697
   local opts = {
-    stdio = {nil, stdout},
-    args = {"dap", "-l", "127.0.0.1:" .. port},
+    stdio = { nil, stdout },
+    args = { "dap", "-l", "127.0.0.1:" .. port },
     detached = true
   }
   handle, pid_or_err = vim.loop.spawn("dlv", opts, function(code)
@@ -28,7 +28,7 @@ dap.adapters.go = function(callback, config)
   -- Wait for delve to start
   vim.defer_fn(
     function()
-      callback({type = "server", host = "127.0.0.1", port = port})
+      callback({ type = "server", host = "127.0.0.1", port = port })
     end,
     100)
 end
@@ -53,7 +53,7 @@ dap.configurations.go = {
     mode = "test",
     program = "${file}"
   },
-  -- works with go.mod packages and sub packages 
+  -- works with go.mod packages and sub packages
   {
     type = "go",
     name = "Debug test (go.mod)",

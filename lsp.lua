@@ -36,45 +36,39 @@ require('cmp_git').setup() -- requires github cli
 -- updates while typing
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    update_in_insert = true,
-  }
+  update_in_insert = true,
+}
 )
 
-local nvim_lsp = require('lspconfig')
+local function keymap(...) vim.keymap.set('n', ...) end
+
+local opts = { noremap = true, silent = true }
+keymap('<leader>rd', vim.diagnostic.open_float, opts)
+keymap('<leader>rk', vim.diagnostic.goto_prev, opts)
+keymap('<leader>rj', vim.diagnostic.goto_next, opts)
+keymap('<leader>rl', vim.diagnostic.setloclist, opts)
+
+local lsp_signature = require('lsp_signature')
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- Mappings.
-  local opts = { noremap = true, silent = true }
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  local bopts = { noremap = true, silent = true, buffer = bufnr }
+  keymap('gD', vim.lsp.buf.declaration, bopts)
+  keymap('gd', vim.lsp.buf.definition, bopts)
+  keymap('gt', vim.lsp.buf.type_definition, bopts)
+  keymap('gr', vim.lsp.buf.references, bopts)
+  keymap('gi', vim.lsp.buf.implementation, bopts)
 
-  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<leader>rd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '<leader>ra', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', '<leader>rh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', '<leader>rs', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  --buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  --buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  --buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<leader>rk', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', '<leader>rj', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<leader>rl', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  keymap('<leader>f', vim.lsp.buf.formatting, bopts)
 
-  -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  elseif client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-  end
+  keymap('<leader>rn', vim.lsp.buf.rename, bopts)
+  keymap('<leader>ra', vim.lsp.buf.code_action, bopts)
+  keymap('<leader>rh', vim.lsp.buf.hover, bopts)
+  keymap('<leader>rs', vim.lsp.buf.signature_help, bopts)
 
-  require('lsp_signature').on_attach({
+  lsp_signature.on_attach({
     hint_enable = false,
     handler_opts = {
       border = "single",
@@ -83,22 +77,34 @@ local on_attach = function(client, bufnr)
 end
 
 local servers = {
-  "tsserver",
-  "gopls",
-  "rnix",
+  tsserver = {},
+  gopls = {},
+  rnix = {},
   --"terraformls",
-  "texlab",
-  "pyright",
-  "rust_analyzer",
+  texlab = {},
+  pyright = {},
+  rust_analyzer = {},
+  sumneko_lua = {
+    Lua = {
+      runtime = { version = 'LuaJIT', },
+      diagnostics = { globals = { 'vim' }, },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file('', true),
+      },
+      telemetry = { enable = false, },
+    },
+  },
 }
 
 local caps = vim.lsp.protocol.make_client_capabilities()
 local capabilities = require('cmp_nvim_lsp').update_capabilities(caps)
 
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
+local lspconfig = require('lspconfig')
+for key, value in pairs(servers) do
+  lspconfig[key].setup {
     on_attach = on_attach,
-    flags = { debounce_text_changes = 150 },
+    flags = { debounce_text_changes = 150 }, -- default in 0.7
     capabilities = capabilities,
+    settings = value,
   }
 end
