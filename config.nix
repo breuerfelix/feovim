@@ -15,6 +15,7 @@
     # language servers
     rnix-lsp
     terraform-ls
+    deno
     nodePackages."@prisma/language-server"
     gopls
     texlab

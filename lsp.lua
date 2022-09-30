@@ -74,14 +74,13 @@ local on_attach = function(_, bufnr)
   }, bufnr)
 end
 
+-- highlight deno codefences
+vim.g.markdown_fenced_languages = {
+  "ts=typescript"
+}
+
 local servers = {
-  --tsserver = {
-    --cmd = {
-      --'typescript-language-server',
-      --'--stdio',
-      --'--tsserver-path=$(dirname $(dirname $(which tsserver)))/lib',
-    --},
-  --},
+  denols = {},
   prismals = {},
   gopls = {},
   rnix = {},
