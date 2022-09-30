@@ -79,8 +79,11 @@ vim.g.markdown_fenced_languages = {
   "ts=typescript"
 }
 
+local lspconfig = require('lspconfig')
 local servers = {
-  denols = {},
+  denols = {
+    root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
+  },
   prismals = {},
   gopls = {},
   rnix = {},
@@ -105,7 +108,6 @@ local servers = {
 local caps = vim.lsp.protocol.make_client_capabilities()
 local capabilities = require('cmp_nvim_lsp').update_capabilities(caps)
 
-local lspconfig = require('lspconfig')
 for key, value in pairs(servers) do
   lspconfig[key].setup {
     on_attach = on_attach,
