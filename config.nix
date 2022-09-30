@@ -15,7 +15,6 @@
     # language servers
     rnix-lsp
     terraform-ls
-    nodePackages.typescript-language-server
     nodePackages."@prisma/language-server"
     gopls
     texlab
@@ -138,9 +137,9 @@
         flags = { debounce_text_changes = 150 },
         capabilities = capabilities,
         cmd = {
-          'typescript-language-server',
-          '--stdio',
+          '${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server',
           '--tsserver-path=${pkgs.nodePackages.typescript}/lib/node_modules/typescript/lib/',
+          '--stdio',
         },
       }
       EOF
