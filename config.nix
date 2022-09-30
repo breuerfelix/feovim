@@ -15,7 +15,6 @@
     # language servers
     rnix-lsp
     terraform-ls
-    nodePackages.typescript
     nodePackages.typescript-language-server
     nodePackages."@prisma/language-server"
     gopls
@@ -133,6 +132,18 @@
       ${fileContents ./plugins.lua}
       ${fileContents ./lsp.lua}
       ${fileContents ./debug.lua}
+
+      lspconfig.tsserver.setup {
+        on_attach = on_attach,
+        flags = { debounce_text_changes = 150 },
+        capabilities = capabilities,
+        cmd = {
+          'typescript-language-server',
+          '--stdio',
+          '--tsserver-path',
+          '${pkgs.nodePackages.typescript}/lib',
+        },
+      }
       EOF
     ''
   ];

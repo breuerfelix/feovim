@@ -75,13 +75,13 @@ local on_attach = function(_, bufnr)
 end
 
 local servers = {
-  tsserver = {
-    cmd = {
-      'typescript-language-server',
-      '--stdio',
-      '--tsserver-path=$(dirname $(dirname $(which tsserver)))/lib',
-    },
-  },
+  --tsserver = {
+    --cmd = {
+      --'typescript-language-server',
+      --'--stdio',
+      --'--tsserver-path=$(dirname $(dirname $(which tsserver)))/lib',
+    --},
+  --},
   prismals = {},
   gopls = {},
   rnix = {},
