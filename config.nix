@@ -17,6 +17,7 @@
     terraform-ls
     nodePackages.typescript
     nodePackages.typescript-language-server
+    nodePackages."@prisma/language-server"
     gopls
     texlab
     nodePackages.pyright
@@ -127,7 +128,6 @@
   neovimConfig = with pkgs.lib.strings; builtins.concatStringsSep "\n" [
     (fileContents ./base.vim)
     (fileContents ./plugins.vim)
-    (fileContents ./lsp.vim)
     ''
       lua << EOF
       ${fileContents ./plugins.lua}

@@ -25,7 +25,6 @@ cmp.setup({
     { name = 'vsnip' },
     { name = 'path' },
     { name = 'cmp_git' },
-    --{ name = 'buffer' },
   },
 })
 
@@ -37,8 +36,7 @@ require('cmp_git').setup() -- requires github cli
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
   update_in_insert = true,
-}
-)
+})
 
 local function keymap(...) vim.keymap.set('n', ...) end
 
@@ -49,7 +47,7 @@ keymap('<leader>rj', vim.diagnostic.goto_next, opts)
 keymap('<leader>rl', vim.diagnostic.setloclist, opts)
 
 local lsp_signature = require('lsp_signature')
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -77,7 +75,15 @@ local on_attach = function(client, bufnr)
 end
 
 local servers = {
-  tsserver = {},
+  tsserver = {
+    cmd = {
+      'typescript-language-server',
+      '--stdio',
+      '--tsserver-path',
+      '$(which tsserver)',
+    },
+  },
+  prismals = {},
   gopls = {},
   rnix = {},
   terraformls = {},
