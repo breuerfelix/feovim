@@ -140,8 +140,7 @@
         cmd = {
           'typescript-language-server',
           '--stdio',
-          '--tsserver-path',
-          '${pkgs.nodePackages.typescript}/lib',
+          '--tsserver-path=${pkgs.nodePackages.typescript}/lib/',
         },
       }
       EOF
