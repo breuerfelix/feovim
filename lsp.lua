@@ -115,5 +115,6 @@ for key, value in pairs(servers) do
     capabilities = capabilities,
     settings = value.settings,
     cmd = value.cmd,
+    root_dir = value.root_dir,
   }
 end

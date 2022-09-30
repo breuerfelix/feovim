@@ -137,7 +137,7 @@
         on_attach = on_attach,
         flags = { debounce_text_changes = 150 },
         capabilities = capabilities,
-        root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json'),
+        root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json'),
         cmd = {
           '${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server',
           '--tsserver-path=${pkgs.nodePackages.typescript}/lib/node_modules/typescript/lib/',
