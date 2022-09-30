@@ -79,8 +79,7 @@ local servers = {
     cmd = {
       'typescript-language-server',
       '--stdio',
-      '--tsserver-path',
-      '$(dirname $(dirname $(which tsserver)))/lib',
+      '--tsserver-path=$(dirname $(dirname $(which tsserver)))/lib',
     },
   },
   prismals = {},
