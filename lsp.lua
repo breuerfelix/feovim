@@ -79,7 +79,8 @@ local servers = {
     cmd = {
       'typescript-language-server',
       '--stdio',
-      '--tsserver-path=$(which tsserver)',
+      '--tsserver-path',
+      '$(which tsserver)',
     },
   },
   prismals = {},
@@ -90,13 +91,15 @@ local servers = {
   pyright = {},
   rust_analyzer = {},
   sumneko_lua = {
-    Lua = {
-      runtime = { version = 'LuaJIT', },
-      diagnostics = { globals = { 'vim' }, },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file('', true),
+    settings = {
+      Lua = {
+        runtime = { version = 'LuaJIT', },
+        diagnostics = { globals = { 'vim' }, },
+        workspace = {
+          library = vim.api.nvim_get_runtime_file('', true),
+        },
+        telemetry = { enable = false, },
       },
-      telemetry = { enable = false, },
     },
   },
 }
@@ -110,6 +113,7 @@ for key, value in pairs(servers) do
     on_attach = on_attach,
     flags = { debounce_text_changes = 150 }, -- default in 0.7
     capabilities = capabilities,
-    settings = value,
+    settings = value.settings,
+    cmd = value.cmd,
   }
 end
