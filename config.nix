@@ -49,7 +49,6 @@
 
 
     # syntax highlighting
-    #"nvim-treesitter" # this package is overlayed with all grammar
     "nvim-ts-rainbow" # bracket highlighting
     "nvim-treesitter-context"
     "delimitMate" # auto bracket
@@ -133,10 +132,11 @@
       ${fileContents ./lsp.lua}
       ${fileContents ./debug.lua}
 
+      -- defined here in order to specify typescript lib path
       lspconfig.tsserver.setup {
         on_attach = on_attach,
-        flags = { debounce_text_changes = 150 },
         capabilities = capabilities,
+        -- prevents clashing with tsserver
         root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json'),
         cmd = {
           '${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server',
