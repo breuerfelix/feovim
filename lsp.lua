@@ -81,10 +81,6 @@ vim.g.markdown_fenced_languages = {
 
 local lspconfig = require('lspconfig')
 local servers = {
-  denols = {
-    -- prevents clashing with tsserver
-    root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
-  },
   prismals = {},
   gopls = {},
   rnix = {},
@@ -92,6 +88,10 @@ local servers = {
   texlab = {},
   pyright = {},
   rust_analyzer = {},
+  denols = {
+    -- prevents clashing with tsserver
+    root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
+  },
   sumneko_lua = {
     settings = {
       Lua = {

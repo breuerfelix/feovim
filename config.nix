@@ -2,6 +2,7 @@
   # binaries that should be added to neovims PATH
   extraPackages = with pkgs; [
     # utilities
+    git
     tree-sitter
     jq
     curl # rest.nvim
@@ -136,7 +137,7 @@
       lspconfig.tsserver.setup {
         on_attach = on_attach,
         capabilities = capabilities,
-        -- prevents clashing with tsserver
+        -- prevents clashing with denols
         root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json'),
         cmd = {
           '${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server',
