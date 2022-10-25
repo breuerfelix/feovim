@@ -13,7 +13,7 @@
   outputs = { self, nixpkgs, flake-utils, ... }@inputs:
     {
       overlay = final: prev: {
-        neovim = final.packages.${prev.system}.default;
+        neovim = self.packages.${prev.system}.default;
       };
     } //
     flake-utils.lib.eachDefaultSystem (system:
