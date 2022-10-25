@@ -11,6 +11,11 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, ... }@inputs:
+    {
+      overlay = final: prev: {
+        neovim = final.packages.${prev.system}.default;
+      };
+    } //
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
@@ -32,31 +37,27 @@
           (name: if lib.hasAttr name vimPlugins then lib.getAttr name vimPlugins else (plugin name))
           plugins;
       in
-      with config; rec {
-        apps = {
-          default = flake-utils.lib.mkApp {
-            drv = packages.default;
-            exePath = "/bin/nvim";
-          };
+      with config; with pkgs; rec {
+        apps.default = flake-utils.lib.mkApp {
+          drv = packages.default;
+          exePath = "/bin/nvim";
         };
 
-        packages = with pkgs; {
-          default = wrapNeovim neovim-unwrapped {
-            viAlias = true;
-            vimAlias = true;
-            withNodeJs = true;
-            withPython3 = true;
-            withRuby = true;
-            extraMakeWrapperArgs = ''--prefix PATH : "${lib.makeBinPath extraPackages}"'';
-            configure = {
-              customRC = neovimConfig;
-              packages.myVimPackage = with pkgs.vimPlugins; {
-                start = pluginMapper startPlugins ++ [
-                  # TODO put this into overlay / config.nix
-                  (nvim-treesitter.withPlugins (plugins: tree-sitter.allGrammars))
-                ];
-                opt = pluginMapper optPlugins;
-              };
+        packages.default = wrapNeovim neovim-unwrapped {
+          viAlias = true;
+          vimAlias = true;
+          withNodeJs = true;
+          withPython3 = true;
+          withRuby = true;
+          extraMakeWrapperArgs = ''--prefix PATH : "${lib.makeBinPath extraPackages}"'';
+          configure = {
+            customRC = neovimConfig;
+            packages.myVimPackage = with vimPlugins; {
+              start = pluginMapper startPlugins ++ [
+                # TODO put this into overlay / config.nix
+                (nvim-treesitter.withPlugins (plugins: tree-sitter.allGrammars))
+              ];
+              opt = pluginMapper optPlugins;
             };
           };
         };
