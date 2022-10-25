@@ -11,7 +11,11 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, ... }@inputs:
-    { } //
+    {
+      overlay = final: prev: {
+        neovim = self.packages.${prev.system}.default;
+      };
+    } //
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
@@ -34,10 +38,6 @@
           plugins;
       in
       with config; with pkgs; rec {
-        overlay = final: prev: {
-          neovim = self.packages.${prev.system}.default;
-        };
-
         apps.default = flake-utils.lib.mkApp {
           drv = packages.default;
           exePath = "/bin/nvim";
