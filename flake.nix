@@ -35,7 +35,7 @@
       in
       with config; with pkgs; rec {
         overlay = final: prev: {
-          neovim = packages.${prev.system}.default;
+          neovim = self.packages.${prev.system}.default;
         };
 
         apps.default = flake-utils.lib.mkApp {
