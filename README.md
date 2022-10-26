@@ -14,11 +14,13 @@ Run anywhere (if nix is installed):
 nix run github:breuerfelix/feovim# .
 ```
 
-Used as a package:
+As an overlay:
 ```nix
 # inputs from flakes
 { inputs, ... }: {
   nixpkgs.overlays = [
+    inputs.feovim.overlay
+    # or
     (self: super: {
       neovim = inputs.feovim.packages.${self.system}.default;
     })
@@ -40,7 +42,7 @@ Nix flakes behave strange on unstaged files.
 
 ```nix
 {
-  description = "Neovim Template";
+  description = "custom neovim";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
