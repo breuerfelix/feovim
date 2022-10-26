@@ -54,6 +54,12 @@ Nix flakes behave strange on unstaged files.
   };
 
   outputs = { self, nixpkgs, flake-utils, ... }@inputs:
+    {
+      # make it easy to use this flake as an overlay
+      overlay = final: prev: {
+        neovim = self.packages.${prev.system}.default;
+      };
+    } //
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
