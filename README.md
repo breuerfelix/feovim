@@ -93,42 +93,38 @@ Nix flakes behave strange on unstaged files.
           (name: if lib.hasAttr name vimPlugins then lib.getAttr name vimPlugins else (plugin name))
           plugins;
       in
-      rec {
-        apps = {
-          default = flake-utils.lib.mkApp {
-            drv = packages.default;
-            exePath = "/bin/nvim";
-          };
+      with pkgs; rec {
+        apps.default = flake-utils.lib.mkApp {
+          drv = packages.default;
+          exePath = "/bin/nvim";
         };
 
-        packages = with pkgs; {
-          default = wrapNeovim neovim-unwrapped {
-            viAlias = true;
-            vimAlias = true;
-            withPython3 = true;
-            withNodeJs = true;
-            withRuby = true;
-            extraMakeWrapperArgs = ''--prefix PATH : "${lib.makeBinPath extraPackages}"'';
-            configure = {
-              # import your individual vim config files here
-              # you can import from files
-              # or directly add the config here as a string
-              customRC = builtins.concatStringsSep "\n" [
-                (lib.strings.fileContents ./config.vim)
-                ''
-                  lua << EOF
-                  -- if you have some lua config
-                  ${lib.strings.fileContents ./config.lua}
-                  EOF
-                ''
-                ''
-                  " you can also directly write your configuration here
-                ''
-              ];
-              packages.myVimPackage = with pkgs; {
-                start = pluginMapper startPlugins;
-                opt = pluginMapper optPlugins;
-              };
+        packages.default = wrapNeovim neovim-unwrapped {
+          viAlias = true;
+          vimAlias = true;
+          withPython3 = true;
+          withNodeJs = true;
+          withRuby = true;
+          extraMakeWrapperArgs = ''--prefix PATH : "${lib.makeBinPath extraPackages}"'';
+          configure = {
+            # import your individual vim config files here
+            # you can import from files
+            # or directly add the config here as a string
+            customRC = builtins.concatStringsSep "\n" [
+              (lib.strings.fileContents ./config.vim)
+              ''
+                lua << EOF
+                -- if you have some lua config
+                ${lib.strings.fileContents ./config.lua}
+                EOF
+              ''
+              ''
+                " you can also directly write your configuration here
+              ''
+            ];
+            packages.myVimPackage = {
+              start = pluginMapper startPlugins;
+              opt = pluginMapper optPlugins;
             };
           };
         };
