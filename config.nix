@@ -48,7 +48,6 @@
     "vim-vsnip"
     "friendly-snippets" # snippet collection for all languages
 
-
     # syntax highlighting
     "nvim-ts-rainbow" # bracket highlighting
     "nvim-treesitter-context"

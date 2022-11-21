@@ -96,7 +96,7 @@ set mouse=
 "syntax
 syntax enable
 set number
-set relativenumber
+"set relativenumber
 set autoread
 set encoding=UTF-8
 "set foldmethod=syntax
