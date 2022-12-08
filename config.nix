@@ -23,6 +23,7 @@
     nodePackages.pyright
     rust-analyzer
     sumneko-lua-language-server
+    nodePackages.yaml-language-server
 
     # formatter
     #black
