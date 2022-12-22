@@ -109,7 +109,7 @@ local servers = {
 }
 
 local caps = vim.lsp.protocol.make_client_capabilities()
-local capabilities = require('cmp_nvim_lsp').default_capabilities(caps)
+local capabilities = require('cmp_nvim_lsp').update_capabilities(caps)
 
 for key, value in pairs(servers) do
   lspconfig[key].setup {
