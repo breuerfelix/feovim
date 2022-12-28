@@ -55,7 +55,7 @@
             packages.myVimPackage = with vimPlugins; {
               start = pluginMapper startPlugins ++ [
                 # TODO put this into overlay / config.nix
-                (nvim-treesitter.withPlugins (plugins: tree-sitter.allGrammars))
+                nvim-treesitter.withAllGrammars
               ];
               opt = pluginMapper optPlugins;
             };
