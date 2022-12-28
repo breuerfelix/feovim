@@ -68,6 +68,13 @@ Nix flakes behave strange on unstaged files.
           config = { allowUnfree = true; };
         };
 
+        # installs a vim plugin from git
+        plugin = with pkgs; repo: vimUtils.buildVimPluginFrom2Nix {
+          pname = "${lib.strings.sanitizeDerivationName repo}";
+          version = "main";
+          src = builtins.getAttr repo inputs;
+        };
+
         # define packages that need to be available in the neovim path
         # for example language servers
         extraPackages = with pkgs; [
@@ -79,25 +86,14 @@ Nix flakes behave strange on unstaged files.
         ];
 
         # plugins loaded at start
-        startPlugins = [
-          "nvim-lspconfig" # will be used from pkgs.vimPlugins
-          "earthly-vim" # will be built on the fly from inputs
+        startPlugins = with pkgs.vimPlugins; [
+          nvim-lspconfig # will be used from pkgs.vimPlugins
+          nvim-treesitter.withAllGrammars
+          (plugin "earthly-vim") # will be built on the fly from inputs
         ];
 
         # plugins loaded optionally
-        optPlugins = [ ];
-
-        # installs a vim plugin from git
-        plugin = with pkgs; repo: vimUtils.buildVimPluginFrom2Nix {
-          pname = "${lib.strings.sanitizeDerivationName repo}";
-          version = "main";
-          src = builtins.getAttr repo inputs;
-        };
-
-        # uses plugin from vimPlugins or builds it from inputs if not found
-        pluginMapper = with pkgs; plugins: map
-          (name: if lib.hasAttr name vimPlugins then lib.getAttr name vimPlugins else (plugin name))
-          plugins;
+        optPlugins = with pkgs.vimPlugins; [ ];
       in
       with pkgs; rec {
         apps.default = flake-utils.lib.mkApp {
@@ -129,8 +125,8 @@ Nix flakes behave strange on unstaged files.
               ''
             ];
             packages.myVimPackage = {
-              start = pluginMapper startPlugins;
-              opt = pluginMapper optPlugins;
+              start = startPlugins;
+              opt = optPlugins;
             };
           };
         };

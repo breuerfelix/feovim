@@ -23,8 +23,6 @@
           config = { allowUnfree = true; };
         };
 
-        config = import ./config.nix { inherit pkgs; };
-
         # installs a vim plugin from git
         plugin = with pkgs; repo: vimUtils.buildVimPluginFrom2Nix {
           pname = "${lib.strings.sanitizeDerivationName repo}";
@@ -32,10 +30,7 @@
           src = builtins.getAttr repo inputs;
         };
 
-        # uses plugin from vimPlugins or builds it from inputs if not found
-        pluginMapper = with pkgs; plugins: map
-          (name: if lib.hasAttr name vimPlugins then lib.getAttr name vimPlugins else (plugin name))
-          plugins;
+        config = import ./config.nix { inherit pkgs plugin; };
       in
       with config; with pkgs; rec {
         apps.default = flake-utils.lib.mkApp {
@@ -53,11 +48,8 @@
           configure = {
             customRC = neovimConfig;
             packages.myVimPackage = with vimPlugins; {
-              start = pluginMapper startPlugins ++ [
-                # TODO put this into overlay / config.nix
-                nvim-treesitter.withAllGrammars
-              ];
-              opt = pluginMapper optPlugins;
+              start = startPlugins;
+              opt = optPlugins;
             };
           };
         };
