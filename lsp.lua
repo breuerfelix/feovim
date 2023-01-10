@@ -59,7 +59,7 @@ local on_attach = function(_, bufnr)
   keymap('gr', vim.lsp.buf.references, bopts)
   keymap('gi', vim.lsp.buf.implementation, bopts)
 
-  keymap('<leader>f', vim.lsp.buf.formatting, bopts)
+  keymap('<leader>f', function() vim.lsp.buf.format { async = true } end, bopts)
 
   keymap('<leader>rn', vim.lsp.buf.rename, bopts)
   keymap('<leader>ra', vim.lsp.buf.code_action, bopts)
