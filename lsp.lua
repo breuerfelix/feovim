@@ -93,13 +93,13 @@ local servers = {
     -- prevents clashing with tsserver
     root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
   },
-  sumneko_lua = {
+  lua_ls = {
     settings = {
       Lua = {
         runtime = { version = 'LuaJIT', },
         diagnostics = { globals = { 'vim' }, },
         workspace = {
-          library = vim.api.nvim_get_runtime_file('', true),
+          library = vim.api.nvim_get_runtime_file("", true),
         },
         telemetry = { enable = false, },
       },

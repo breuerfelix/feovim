@@ -1,6 +1,6 @@
 require('which-key').setup()
 require('nvim-web-devicons').setup()
-require('colorizer').setup()
+require('colorizer').setup({})
 -- :DiffviewOpen / DiffviewClose
 require('diffview').setup()
 require('spellsitter').setup()
@@ -17,11 +17,16 @@ require('todo-comments').setup {
 }
 
 require('nvim-tree').setup {
-  --open_on_setup = true,
   git = {
     ignore = false,
   },
 }
+
+local function open_nvim_tree()
+  require("nvim-tree.api").tree.open()
+end
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
 require('fzf-lua').setup {
   winopts = {
