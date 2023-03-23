@@ -88,7 +88,6 @@ local servers = {
   texlab = {},
   pyright = {},
   rust_analyzer = {},
-  -- TODO: setup kubernetes language server
   yamlls = {},
   denols = {
     -- prevents clashing with tsserver
