@@ -139,6 +139,7 @@
         on_attach = on_attach,
         capabilities = capabilities,
         -- prevents clashing with denols
+        single_file_support = false,
         root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json'),
         cmd = {
           '${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server',
