@@ -40,7 +40,7 @@ require('fzf-lua').setup {
   },
   grep = {
     rg_opts = "--hidden --column --line-number --no-heading " ..
-        "--color=always --smart-case " ..
+        "--color=always --smart-case --no-filename " ..
         "-g '!{.git,node_modules,vendor}/*'",
   },
 }
