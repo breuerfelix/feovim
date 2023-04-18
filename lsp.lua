@@ -88,7 +88,13 @@ local servers = {
   texlab = {},
   pyright = {},
   rust_analyzer = {},
-  yamlls = {},
+  yamlls = {
+    settings = {
+      yaml = {
+        keyOrdering = false,
+      },
+    },
+  },
   denols = {
     -- prevents clashing with tsserver
     root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
