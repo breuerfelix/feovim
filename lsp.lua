@@ -38,13 +38,11 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   update_in_insert = true,
 })
 
-local function keymap(...) vim.keymap.set('n', ...) end
-
 local opts = { noremap = true, silent = true }
-keymap('<leader>rd', vim.diagnostic.open_float, opts)
-keymap('<leader>rk', vim.diagnostic.goto_prev, opts)
-keymap('<leader>rj', vim.diagnostic.goto_next, opts)
-keymap('<leader>rl', vim.diagnostic.setloclist, opts)
+nmap('<leader>rd', vim.diagnostic.open_float, opts)
+nmap('<leader>rk', vim.diagnostic.goto_prev, opts)
+nmap('<leader>rj', vim.diagnostic.goto_next, opts)
+nmap('<leader>rl', vim.diagnostic.setloclist, opts)
 
 local lsp_signature = require('lsp_signature')
 local on_attach = function(_, bufnr)
@@ -53,18 +51,18 @@ local on_attach = function(_, bufnr)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   local bopts = { noremap = true, silent = true, buffer = bufnr }
-  keymap('gD', vim.lsp.buf.declaration, bopts)
-  keymap('gd', vim.lsp.buf.definition, bopts)
-  keymap('gt', vim.lsp.buf.type_definition, bopts)
-  keymap('gr', vim.lsp.buf.references, bopts)
-  keymap('gi', vim.lsp.buf.implementation, bopts)
+  nmap('gD', vim.lsp.buf.declaration, bopts)
+  nmap('gd', vim.lsp.buf.definition, bopts)
+  nmap('gt', vim.lsp.buf.type_definition, bopts)
+  nmap('gr', vim.lsp.buf.references, bopts)
+  nmap('gi', vim.lsp.buf.implementation, bopts)
 
-  keymap('<leader>f', function() vim.lsp.buf.format { async = true } end, bopts)
+  nmap('<leader>f', function() vim.lsp.buf.format { async = true } end, bopts)
 
-  keymap('<leader>rn', vim.lsp.buf.rename, bopts)
-  keymap('<leader>ra', vim.lsp.buf.code_action, bopts)
-  keymap('<leader>rh', vim.lsp.buf.hover, bopts)
-  keymap('<leader>rs', vim.lsp.buf.signature_help, bopts)
+  nmap('<leader>rn', vim.lsp.buf.rename, bopts)
+  nmap('<leader>ra', vim.lsp.buf.code_action, bopts)
+  nmap('<leader>rh', vim.lsp.buf.hover, bopts)
+  nmap('<leader>rs', vim.lsp.buf.signature_help, bopts)
 
   lsp_signature.on_attach({
     hint_enable = false,

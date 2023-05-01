@@ -6,6 +6,13 @@ require('diffview').setup()
 require('spellsitter').setup()
 require('telescope').setup()
 require('illuminate').configure()
+require('hop').setup()
+
+---hop keybindings, easymotion like
+nmap("<Leader><Leader>b", "<cmd>HopWordBC<CR>")
+nmap("<Leader><Leader>w", "<cmd>HopWordAC<CR>")
+nmap("<Leader><Leader>j", "<cmd>HopLineAC<CR>")
+nmap("<Leader><Leader>k", "<cmd>HopLineBC<CR>")
 
 require('todo-comments').setup {
   search = {

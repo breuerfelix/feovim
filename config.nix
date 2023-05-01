@@ -66,7 +66,7 @@
     nvim-web-devicons
 
     # navigation
-    vim-easymotion
+    hop-nvim
     clever-f-vim
     nvim-tree-lua
     vista-vim
@@ -130,6 +130,7 @@
     (fileContents ./plugins.vim)
     ''
       lua << EOF
+      ${fileContents ./utils.lua}
       ${fileContents ./plugins.lua}
       ${fileContents ./lsp.lua}
       ${fileContents ./debug.lua}
