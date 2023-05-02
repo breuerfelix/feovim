@@ -65,7 +65,9 @@ local on_attach = function(_, bufnr)
   nmap('<leader>rs', vim.lsp.buf.signature_help, bopts)
 
   lsp_signature.on_attach({
-    hint_enable = false,
+    hint_enable = true,
+    hint_prefix = "arg - ",
+    bind = true,
     handler_opts = {
       border = "single",
     },

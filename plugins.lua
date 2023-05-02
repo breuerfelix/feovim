@@ -9,10 +9,10 @@ require('illuminate').configure()
 require('hop').setup()
 
 ---hop keybindings, easymotion like
-nmap("<Leader><Leader>b", "<cmd>HopWordBC<CR>")
-nmap("<Leader><Leader>w", "<cmd>HopWordAC<CR>")
-nmap("<Leader><Leader>j", "<cmd>HopLineAC<CR>")
-nmap("<Leader><Leader>k", "<cmd>HopLineBC<CR>")
+nmap("<leader>b", "<cmd>HopWordBC<CR>")
+nmap("<leader>w", "<cmd>HopWordAC<CR>")
+nmap("<leader>j", "<cmd>HopLineAC<CR>")
+nmap("<leader>k", "<cmd>HopLineBC<CR>")
 
 require('todo-comments').setup {
   search = {
@@ -55,7 +55,7 @@ require('fzf-lua').setup {
 require('gitsigns').setup {
   signs = {
     -- source: https://en.wikipedia.org/wiki/Box-drawing_character
-    add          = { hl = 'GitSignsAdd'   , text = '┃', numhl = 'GitSignsAddNr'   , linehl = 'GitSignsAddLn'    },
+    add          = { hl = 'GitSignsAdd', text = '┃', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
     change       = { hl = 'GitSignsChange', text = '┃', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
     delete       = { hl = 'GitSignsDelete', text = '_', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
     topdelete    = { hl = 'GitSignsDelete', text = '‾', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },

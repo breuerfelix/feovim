@@ -7,7 +7,7 @@ lua require('which-key').register({ ['<leader>d'] = { name = 'debugging' } })
 set timeoutlen=500
 set signcolumn=yes
 
-map <leader>b :NvimTreeToggle<CR>
+nmap <leader>a :NvimTreeToggle<CR>
 nmap <leader>t :Vista!!<CR>
 nmap <leader>s :FzfLua grep search=""<CR>
 nmap <leader>ln :noh<CR>
@@ -77,20 +77,6 @@ call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_bo
 "better wildmenu
 set wildmenu
 set wildmode=longest:list,full
-
-"vimwiki
-let g:vimwiki_list = [{
-  \ 'path': '~/vimwiki/',
-  \ 'syntax': 'markdown',
-  \ 'ext': '.md'
-  \ }]
-"otherwhise vimwiki considers every .md file as vimwiki
-let g:vimwiki_global_ext = 0
-
-nmap <leader>wj <Plug>VimwikiNextLink
-nmap <leader>wk <Plug>VimwikiPrevLink
-"let g:which_key_map['w'] = { 'name': 'vimwiki' }";
-lua require('which-key').register({ ['<leader>w'] = { name = 'vimwiki' } })
 
 "vim smoothie
 nmap <C-d> <Plug>(SmoothieDownwards)

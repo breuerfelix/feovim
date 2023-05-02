@@ -111,7 +111,6 @@
     nvim-dap
 
     # could be lazy loaded
-    vimwiki
     #vim-grammarous
     #vim-startuptime
     #goyo-vim
