@@ -6,6 +6,7 @@
 let mapleader = ' '
 inoremap jk <Esc>
 vnoremap u <Esc>
+"scrolls through modals in insert mode
 imap <C-j> <C-n>
 imap <C-k> <C-p>
 
@@ -15,8 +16,6 @@ noremap <C-c> <S-j>
 "faster scrolling
 noremap <S-j> 3jzz
 noremap <S-k> 3kzz
-"nmap <C-d> <C-d>
-"nmap <C-f> <C-u>
 
 "buffer
 nmap <C-n> :bnext<CR>
@@ -159,7 +158,8 @@ au BufRead,BufNewFile *.nix set filetype=nix
 "
 "
 set background=dark
-colorscheme tokyonight-night
+"colorscheme tokyonight-night
+colorscheme github_dark_colorblind
 
 "override colorscheme
 "enable transparent background

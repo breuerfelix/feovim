@@ -31,6 +31,22 @@
         "type": "github"
       }
     },
+    "github-nvim-theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1684822097,
+        "narHash": "sha256-q2H2v5Q8wae7OVACU7VMhTe9LwluEg7/m3Qe1+duiN0=",
+        "owner": "projekt0n",
+        "repo": "github-nvim-theme",
+        "rev": "20a949da713b58f28ba6af153a7d1691933ac942",
+        "type": "github"
+      },
+      "original": {
+        "owner": "projekt0n",
+        "repo": "github-nvim-theme",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1679566188,
@@ -50,6 +66,7 @@
       "inputs": {
         "earthly-vim": "earthly-vim",
         "flake-utils": "flake-utils",
+        "github-nvim-theme": "github-nvim-theme",
         "nixpkgs": "nixpkgs"
       }
     }

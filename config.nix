@@ -119,6 +119,7 @@
 
     # colorschemes
     tokyonight-nvim
+    (plugin "github-nvim-theme")
   ];
 
   # plugins loaded optionally

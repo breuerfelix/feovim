@@ -23,16 +23,26 @@ require('todo-comments').setup {
   },
 }
 
+-- disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 require('nvim-tree').setup {
   git = {
-    ignore = false,
+    ignore = true,
   },
+  --hijack_unnamed_buffer_when_opening = false,
+  --disable_netrw = false,
+  --hijack_netrw = false,
+  --hijack_directories = {
+    --enable = false,
+    --auto_open = false,
+  --},
 }
 
 local function open_nvim_tree()
   require("nvim-tree.api").tree.open()
 end
-
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
 require('fzf-lua').setup {
@@ -106,7 +116,8 @@ require('nvim-gps').setup({
 local gps = require('nvim-gps')
 require('lualine').setup {
   options = {
-    theme = 'tokyonight',
+    -- gets set automatically
+    -- theme = 'tokyonight',
     -- disable powerline
     section_separators = '',
     component_separators = '',
