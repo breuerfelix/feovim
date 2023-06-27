@@ -134,7 +134,7 @@ set scrolloff=8
 set startofline
 
 augroup save_when_leave
-    au BufLeave * silent! wall
+  au BufLeave * silent! wall
 augroup END
 
 set hidden
