@@ -31,19 +31,29 @@ require('nvim-tree').setup {
   git = {
     ignore = true,
   },
-  --hijack_unnamed_buffer_when_opening = false,
-  --disable_netrw = false,
-  --hijack_netrw = false,
-  --hijack_directories = {
-    --enable = false,
-    --auto_open = false,
-  --},
 }
 
-local function open_nvim_tree()
+local function open_nvim_tree(data)
+   -- buffer is a [No Name]
+  local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
+
+  -- buffer is a directory
+  local directory = vim.fn.isdirectory(data.file) == 1
+
+  if not no_name and not directory then
+    return
+  end
+
+  -- change to the directory
+  if directory then
+    vim.cmd.cd(data.file)
+  end
+
+  -- open the tree
   require("nvim-tree.api").tree.open()
 end
---vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
 require('fzf-lua').setup {
   winopts = {
