@@ -15,6 +15,22 @@
       overlay = final: prev: {
         neovim = self.packages.${prev.system}.default;
       };
+
+      homeManagerModules = {
+        ideavim = { config, lib, ... }:
+          with lib;
+          let cfg = config.feovim.programs.ideavim; in
+          {
+            options.feovim.programs.ideavim.enable = mkEnableOption "IntelliJ IDEA Integration";
+            config = mkIf cfg.enable
+              {
+                home.file.ideavim = {
+                  target = ".ideavimrc";
+                  text = fileContents "base.vim";
+                };
+              };
+          };
+      };
     } //
     flake-utils.lib.eachDefaultSystem (system:
       let
