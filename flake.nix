@@ -16,21 +16,21 @@
         neovim = self.packages.${prev.system}.default;
       };
 
-      homeManagerModules = {
-        ideavim = { config, lib, ... }:
-          with lib;
-          let cfg = config.ideavim; in
-          {
-            options.ideavim.enable = mkEnableOption "IntelliJ IDEA Integration";
-            config = mkIf cfg.enable
-              {
-                home.file.ideavim = {
-                  target = ".ideavimrc";
-                  text = fileContents ./base.vim;
-                };
+      # home-manager module that sets the base vim file
+      # to the correct path for IdeaVim to consume
+      ideavim = { config, lib, ... }:
+        with lib;
+        let cfg = config.ideavim; in
+        {
+          options.ideavim.enable = mkEnableOption "IntelliJ IDEA Integration";
+          config = mkIf cfg.enable
+            {
+              home.file.ideavim = {
+                target = ".ideavimrc";
+                text = fileContents ./base.vim;
               };
-          };
-      };
+            };
+        };
     } //
     flake-utils.lib.eachDefaultSystem (system:
       let
