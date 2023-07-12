@@ -26,7 +26,7 @@
               {
                 home.file.ideavim = {
                   target = ".ideavimrc";
-                  text = fileContents "./base.vim";
+                  text = fileContents ./base.vim;
                 };
               };
           };
