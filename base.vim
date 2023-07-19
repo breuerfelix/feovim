@@ -20,12 +20,8 @@ noremap <S-k> 3kzz
 "buffer
 nmap <C-n> :bnext<CR>
 nmap <C-p> :bprevious<CR>
-"nmap <C-y> :bdelete<CR>
-nmap <C-y> :BD<CR>
-"map <C-t> :tabnew<CR>
-
-"finder
-nmap ; :FzfLua files<CR>
+nmap <C-y> :bdelete<CR>
+map <C-t> :tabnew<CR>
 
 "inserts blank line below
 noremap <C-[> :set paste<CR>o<Esc>:set nopaste<CR>
@@ -34,7 +30,7 @@ noremap gh 0
 
 "save
 "Control-I is the same as Tab in the terminal
-nmap <leader>u :update<CR>
+nmap <silent> <leader>u :update<CR>
 nmap <silent> <C-i> :update<CR>
 nmap <silent> <Tab> :update<CR>
 "sudo tee hack, write as root
@@ -73,14 +69,9 @@ noremap <silent> <C-l> :call WinMove('l')<CR>
 tnoremap jk <C-\><C-n>
 tnoremap <C-u> <C-\><C-n>:q<CR>
 
-"run current buffer
-autocmd filetype python nnoremap <leader>er :VimuxRunCommand("python %")<CR>
-autocmd filetype javascript,typescript nnoremap <leader>er :VimuxRunCommand("node %")<CR>
-autocmd filetype go noremap <leader>er :VimuxRunCommand("go run .")<CR>
-
-"formatter
-"FIX: Black() not found
-"autocmd filetype python noremap <leader>f <cmd>call Black()<CR>
+"signcolumn
+set timeoutlen=500
+set signcolumn=yes
 
 "true colors
 set termguicolors
@@ -95,11 +86,13 @@ set mouse=
 "syntax
 syntax enable
 set number
+"is not useful in screenshare
 "set relativenumber
 set autoread
 set encoding=UTF-8
 "set foldmethod=syntax
 
+"uses system clipboard
 set clipboard=unnamedplus
 
 "disable pre rendering of some things like ```
@@ -152,24 +145,3 @@ noremap <leader>i <C-i>zz
 
 "filetypes
 au BufRead,BufNewFile *.nix set filetype=nix
-
-"
-" THEMING
-"
-"
-set background=dark
-"colorscheme tokyonight-night
-colorscheme github_dark_colorblind
-
-"override colorscheme
-"enable transparent background
-"highlight Normal ctermbg=NONE guibg=NONE
-
-"render whitespace softer than comments
-highlight NonText guifg=#262a40
-highlight Whitespace guifg=#262a40
-highlight SpecialKey guifg=#262a40
-
-"highlight only one character when line too long
-highlight ColorColumn ctermbg=grey guibg=grey25
-call matchadd('ColorColumn', '\%88v', 100)

@@ -1,12 +1,17 @@
 "BufKill
+nmap <C-y> :BD<CR>
+"disable default mapping
 let g:BufKillCreateMappings = 0
 
 lua require('which-key').register({ ['<leader>c'] = { name = 'commenter' } })
 lua require('which-key').register({ ['<leader>d'] = { name = 'debugging' } })
 
-set timeoutlen=500
-set signcolumn=yes
+"run current buffer
+autocmd filetype python nnoremap <leader>er :VimuxRunCommand("python %")<CR>
+autocmd filetype javascript,typescript nnoremap <leader>er :VimuxRunCommand("node %")<CR>
+autocmd filetype go noremap <leader>er :VimuxRunCommand("go run .")<CR>
 
+"other
 nmap <leader>a :NvimTreeToggle<CR>
 nmap <leader>t :Vista!!<CR>
 nmap <leader>s :FzfLua grep search=""<CR>
@@ -45,34 +50,34 @@ imap <expr> <C-l> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 smap <expr> <C-l> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 
 call wilder#setup({
-  \ 'modes': [':', '/', '?'],
-  \ 'next_key': '<C-j>',
-  \ 'previous_key': '<C-k>',
-  \ 'accept_key': '<Down>',
-  \ 'reject_key': '<Up>',
-  \ })
+\ 'modes': [':', '/', '?'],
+\ 'next_key': '<C-j>',
+\ 'previous_key': '<C-k>',
+\ 'accept_key': '<Down>',
+\ 'reject_key': '<Up>',
+\ })
 
 call wilder#set_option('pipeline', [
-  \   wilder#branch(
-  \     wilder#cmdline_pipeline({
-  \       'language': 'python',
-  \       'fuzzy': 1,
-  \     }),
-  \     wilder#python_search_pipeline({
-  \       'pattern': wilder#python_fuzzy_pattern(),
-  \       'sorter': wilder#python_difflib_sorter(),
-  \       'engine': 're',
-  \     }),
-  \   ),
-  \ ])
+\   wilder#branch(
+\     wilder#cmdline_pipeline({
+\       'language': 'python',
+\       'fuzzy': 1,
+\     }),
+\     wilder#python_search_pipeline({
+\       'pattern': wilder#python_fuzzy_pattern(),
+\       'sorter': wilder#python_difflib_sorter(),
+\       'engine': 're',
+\     }),
+\   ),
+\ ])
 
 call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
-  \ 'highlighter': wilder#basic_highlighter(),
-  \ 'border': 'single',
-  \ 'left': [
-  \   ' ', wilder#popupmenu_devicons()
-  \ ],
-  \ })))
+\ 'highlighter': wilder#basic_highlighter(),
+\ 'border': 'single',
+\ 'left': [
+\   ' ', wilder#popupmenu_devicons()
+\ ],
+\ })))
 
 "better wildmenu
 set wildmenu
@@ -88,6 +93,7 @@ let g:smoothie_no_default_mappings = 1
 let g:user_emmet_leader_key = '<C-e>'
 
 "fzf
+nmap ; :FzfLua files<CR>
 let g:fzf_layout = { 'window': { 'border': 'sharp', 'width': 0.9, 'height': 0.6 } }
 
 "editor config
@@ -96,9 +102,9 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_compiler_method = 'generic'
 let g:vimtex_compiler_generic = {
-  \ 'cmd' : 'bash run.sh',
-  \ 'build_dir' : '',
-  \ }
+\ 'cmd' : 'bash run.sh',
+\ 'build_dir' : '',
+\ }
 
 nmap <leader>el :VimtexCompile<CR>
 nmap <leader>ec :Codi!!<CR>
@@ -106,11 +112,11 @@ nmap <leader>eh <Plug>RestNvim
 lua require('which-key').register({ ['<leader>e'] = { name = 'exec' } })
 
 let g:codi#interpreters = {
-     \ 'python': {
-         \ 'bin': '/opt/homebrew/bin/python3',
-         \ 'prompt': '^\(>>>\|\.\.\.\) ',
-         \ },
-     \ }
+\ 'python': {
+   \ 'bin': '/opt/homebrew/bin/python3',
+   \ 'prompt': '^\(>>>\|\.\.\.\) ',
+   \ },
+\ }
 
 "disable all extensions for a minimal setup
 let g:airline_extensions = []

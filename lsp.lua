@@ -89,6 +89,7 @@ local servers = {
   texlab = {},
   pyright = {},
   rust_analyzer = {},
+  kotlin_language_server = {},
   yamlls = {
     settings = {
       yaml = {

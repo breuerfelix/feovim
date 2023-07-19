@@ -24,9 +24,7 @@
     rust-analyzer
     sumneko-lua-language-server
     nodePackages.yaml-language-server
-
-    # formatter
-    #black
+    kotlin-language-server
 
     # debugging
     delve # golang
@@ -104,9 +102,6 @@
     tagalong-vim
     codi-vim
 
-    # formatters
-    #black-nvim # FIX
-
     # debugging
     nvim-dap
 
@@ -127,6 +122,7 @@
 
   neovimConfig = with pkgs.lib.strings; builtins.concatStringsSep "\n" [
     (fileContents ./base.vim)
+    (fileContents ./theme.vim)
     (fileContents ./plugins.vim)
     ''
       lua << EOF
