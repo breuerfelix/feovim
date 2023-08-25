@@ -4,8 +4,12 @@
     # utilities
     git
     tree-sitter
-    jq
-    curl # rest.nvim
+
+    # rest.nvim
+    jq # formats json
+    html-tidy # formats html
+    curl
+
     bat
     ripgrep
     fd
@@ -51,6 +55,7 @@
     nvim-treesitter.withAllGrammars
     nvim-ts-rainbow # bracket highlighting
     nvim-treesitter-context
+    nvim-lint
     delimitMate # auto bracket
     editorconfig-vim
     (plugin "earthly-vim") # built from inputs
@@ -85,8 +90,6 @@
     fzf-lua
     nvim-fzf
 
-    vimux
-
     nvim-colorizer-lua
     vim-fugitive
     diffview-nvim
@@ -99,18 +102,17 @@
     nerdcommenter
     emmet-vim
 
+    # examples: https://github.com/rest-nvim/rest.nvim/tree/main/tests
+    rest-nvim # http client
+
     tagalong-vim
     codi-vim
 
     # debugging
     nvim-dap
 
-    # could be lazy loaded
-    #vim-grammarous
-    #vim-startuptime
-    #goyo-vim
-    #limelight-vim
-    #rest.nvim # http client
+    # diagnostics
+    vim-startuptime
 
     # colorschemes
     tokyonight-nvim

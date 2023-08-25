@@ -7,6 +7,7 @@ require('spellsitter').setup()
 require('telescope').setup()
 require('illuminate').configure()
 require('hop').setup()
+require('rest-nvim').setup()
 
 ---hop keybindings, easymotion like
 nmap("<leader>b", "<cmd>HopWordBC<CR>")
