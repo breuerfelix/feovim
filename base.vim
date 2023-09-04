@@ -145,3 +145,4 @@ noremap <leader>i <C-i>zz
 
 "filetypes
 au BufRead,BufNewFile *.nix set filetype=nix
+au BufRead,BufNewFile *.libsonnet set filetype=jsonnet
