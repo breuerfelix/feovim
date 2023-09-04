@@ -29,6 +29,7 @@
     sumneko-lua-language-server
     nodePackages.yaml-language-server
     kotlin-language-server
+    jsonnet-language-server
 
     # debugging
     delve # golang

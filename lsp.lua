@@ -90,6 +90,7 @@ local servers = {
   pyright = {},
   rust_analyzer = {},
   kotlin_language_server = {},
+  jsonnet_ls = {},
   yamlls = {
     settings = {
       yaml = {
