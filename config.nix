@@ -30,6 +30,7 @@
     nodePackages.yaml-language-server
     kotlin-language-server
     jsonnet-language-server
+    helm-ls
 
     # debugging
     delve # golang
