@@ -83,7 +83,7 @@
 
     # bars
     lualine-nvim
-    nvim-gps # shows code context
+    #nvim-gps # shows code context
     bufferline-nvim
     vim-bufkill
 

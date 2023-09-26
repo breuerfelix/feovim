@@ -115,16 +115,16 @@ require('bufferline').setup {
   },
 }
 
-require('nvim-gps').setup({
-  icons = {
-    ["class-name"] = ' ',
-    ["function-name"] = ' ',
-    ["method-name"] = ' '
-  },
-  separator = ' > ',
-})
+--require('nvim-gps').setup({
+  --icons = {
+    --["class-name"] = ' ',
+    --["function-name"] = ' ',
+    --["method-name"] = ' '
+  --},
+  --separator = ' > ',
+--})
 
-local gps = require('nvim-gps')
+--local gps = require('nvim-gps')
 require('lualine').setup {
   options = {
     -- gets set automatically
@@ -133,11 +133,11 @@ require('lualine').setup {
     section_separators = '',
     component_separators = '',
   },
-  sections = {
-    lualine_c = {
-      { gps.get_location, condition = gps.is_available },
-    },
-  },
+  --sections = {
+    --lualine_c = {
+      --{ gps.get_location, condition = gps.is_available },
+    --},
+  --},
 }
 
 require('indent_blankline').setup {
