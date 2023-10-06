@@ -88,14 +88,13 @@ require('gitsigns').setup {
 require('nvim-treesitter.configs').setup {
   -- they are managed by nix
   auto_install = false,
-  --ensure_installed = "all",
   highlight = {
-    enable = false,
+    enable = true,
     additional_vim_regex_highlighting = false,
   },
   indent = { enable = true },
   rainbow = {
-    enable = true,
+    enable = false,
     extended_mode = true,
     -- prevents lagging in large files
     max_file_lines = 1000,
