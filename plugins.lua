@@ -94,6 +94,7 @@ require('nvim-treesitter.configs').setup {
   },
   indent = { enable = true },
   rainbow = {
+    -- TODO: fix it, this prevents tsx files from saving
     enable = false,
     extended_mode = true,
     -- prevents lagging in large files
