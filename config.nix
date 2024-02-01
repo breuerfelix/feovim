@@ -56,12 +56,12 @@
     # syntax highlighting
     nvim-treesitter.withAllGrammars
     nvim-ts-rainbow # bracket highlighting
-    nvim-treesitter-context
+    #nvim-treesitter-context
     nvim-lint
     delimitMate # auto bracket
     editorconfig-vim
     (plugin "earthly-vim") # built from inputs
-    #vim-helm
+    vim-helm
     spellsitter-nvim # spellchecker for comments
     vim-illuminate # highlight other words under cursor
 
