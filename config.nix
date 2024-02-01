@@ -30,7 +30,7 @@
     nodePackages.yaml-language-server
     kotlin-language-server
     jsonnet-language-server
-    helm-ls
+    #helm-ls
 
     # debugging
     delve # golang
@@ -61,7 +61,7 @@
     delimitMate # auto bracket
     editorconfig-vim
     (plugin "earthly-vim") # built from inputs
-    vim-helm
+    #vim-helm
     spellsitter-nvim # spellchecker for comments
     vim-illuminate # highlight other words under cursor
 
