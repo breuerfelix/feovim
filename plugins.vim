@@ -53,8 +53,6 @@ call wilder#setup({
 \ 'modes': [':', '/', '?'],
 \ 'next_key': '<C-j>',
 \ 'previous_key': '<C-k>',
-\ 'accept_key': '<Down>',
-\ 'reject_key': '<Up>',
 \ })
 
 call wilder#set_option('pipeline', [
