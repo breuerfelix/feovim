@@ -8,7 +8,6 @@ require('telescope').setup()
 require('illuminate').configure()
 require('hop').setup()
 require('rest-nvim').setup()
-require('zk').setup()
 require('ibl').setup()
 
 ---hop keybindings, easymotion like
