@@ -16,6 +16,7 @@
     fzf # fzf
     universal-ctags # vista
     gh # github cli for cmp_git
+    zk # zettelkasten
 
     # language servers
     rnix-lsp
@@ -64,6 +65,7 @@
     vim-helm
     spellsitter-nvim # spellchecker for comments
     vim-illuminate # highlight other words under cursor
+    zk-nvim # zettelkasten
 
     # utilities
     plenary-nvim

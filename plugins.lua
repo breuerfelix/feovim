@@ -8,6 +8,7 @@ require('telescope').setup()
 require('illuminate').configure()
 require('hop').setup()
 require('rest-nvim').setup()
+require('zk').setup()
 
 ---hop keybindings, easymotion like
 nmap("<leader>b", "<cmd>HopWordBC<CR>")
