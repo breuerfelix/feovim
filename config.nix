@@ -56,7 +56,7 @@
 
     # syntax highlighting
     nvim-treesitter.withAllGrammars
-    nvim-ts-rainbow # bracket highlighting
+    rainbow-delimiters-nvim # bracket highlighting
     nvim-treesitter-context
     nvim-lint
     delimitMate # auto bracket

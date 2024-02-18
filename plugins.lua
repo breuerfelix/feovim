@@ -9,6 +9,7 @@ require('illuminate').configure()
 require('hop').setup()
 require('rest-nvim').setup()
 require('zk').setup()
+require('ibl').setup()
 
 ---hop keybindings, easymotion like
 nmap("<leader>b", "<cmd>HopWordBC<CR>")
@@ -94,13 +95,6 @@ require('nvim-treesitter.configs').setup {
     additional_vim_regex_highlighting = false,
   },
   indent = { enable = true },
-  rainbow = {
-    -- TODO: fix it, this prevents tsx files from saving
-    enable = false,
-    extended_mode = true,
-    -- prevents lagging in large files
-    max_file_lines = 1000,
-  },
 }
 
 require('treesitter-context').setup {
@@ -139,8 +133,4 @@ require('lualine').setup {
       --{ gps.get_location, condition = gps.is_available },
     --},
   --},
-}
-
-require('indent_blankline').setup {
-  show_current_context = true,
 }
