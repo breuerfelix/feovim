@@ -67,6 +67,7 @@
 
     # utilities
     plenary-nvim
+    nui-nvim # used for hardtime
     telescope-nvim
     nvim-web-devicons
 
@@ -76,6 +77,7 @@
     nvim-tree-lua
     vista-vim
     todo-comments-nvim
+    hardtime-nvim
 
     # highlights current variable with underline
     nvim-cursorline

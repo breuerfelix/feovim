@@ -1,14 +1,17 @@
 require('which-key').setup()
 require('nvim-web-devicons').setup()
 require('colorizer').setup({})
--- :DiffviewOpen / DiffviewClose
-require('diffview').setup()
+require('diffview').setup() -- :DiffviewOpen / DiffviewClose
 require('spellsitter').setup()
 require('telescope').setup()
 require('illuminate').configure()
 require('hop').setup()
 require('rest-nvim').setup()
 require('ibl').setup()
+
+require('hardtime').setup({
+  restriction_mode = "hint",
+})
 
 ---hop keybindings, easymotion like
 nmap("<leader>b", "<cmd>HopWordBC<CR>")
@@ -36,7 +39,7 @@ require('nvim-tree').setup {
 }
 
 local function open_nvim_tree(data)
-   -- buffer is a [No Name]
+  -- buffer is a [No Name]
   local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
 
   -- buffer is a directory
@@ -109,16 +112,6 @@ require('bufferline').setup {
   },
 }
 
---require('nvim-gps').setup({
-  --icons = {
-    --["class-name"] = ' ',
-    --["function-name"] = ' ',
-    --["method-name"] = ' '
-  --},
-  --separator = ' > ',
---})
-
---local gps = require('nvim-gps')
 require('lualine').setup {
   options = {
     -- gets set automatically
@@ -127,9 +120,4 @@ require('lualine').setup {
     section_separators = '',
     component_separators = '',
   },
-  --sections = {
-    --lualine_c = {
-      --{ gps.get_location, condition = gps.is_available },
-    --},
-  --},
 }
