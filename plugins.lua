@@ -9,10 +9,6 @@ require('hop').setup()
 require('rest-nvim').setup()
 require('ibl').setup()
 
-require('hardtime').setup({
-  restriction_mode = "hint",
-})
-
 ---hop keybindings, easymotion like
 nmap("<leader>b", "<cmd>HopWordBC<CR>")
 nmap("<leader>w", "<cmd>HopWordAC<CR>")
