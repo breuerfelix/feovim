@@ -70,7 +70,8 @@
         "earthly-vim": "earthly-vim",
         "flake-utils": "flake-utils",
         "github-nvim-theme": "github-nvim-theme",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "vim-tabby": "vim-tabby"
       }
     },
     "systems": {
@@ -85,6 +86,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "vim-tabby": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1709310821,
+        "narHash": "sha256-z6SlQpLJSgeKvgYyplsS5c0KL89oEYm4BgDMkmpg5XI=",
+        "owner": "tabbyml",
+        "repo": "vim-tabby",
+        "rev": "afd76df166ed0f223ede1071e0cfde8075cc4a24",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tabbyml",
+        "repo": "vim-tabby",
         "type": "github"
       }
     }

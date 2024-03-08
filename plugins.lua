@@ -28,6 +28,10 @@ require('todo-comments').setup {
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+--- tabby / ai coding assistant
+vim.g.tabby_keybinding_accept = '<C-a>'
+vim.g.tabby_keybinding_trigger_or_dismiss = '<C-d>'
+
 require('nvim-tree').setup {
   git = {
     ignore = true,

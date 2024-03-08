@@ -47,6 +47,7 @@
     cmp-path
     cmp-git
     lsp_signature-nvim
+    (plugin "vim-tabby") # ai coding assistant
 
     # snippets are needed for many language servers
     cmp-vsnip
