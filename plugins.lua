@@ -32,6 +32,15 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.tabby_keybinding_accept = '<C-a>'
 vim.g.tabby_keybinding_trigger_or_dismiss = '<C-d>'
 
+-- highlight when yanking text
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
+
 require('nvim-tree').setup {
   git = {
     ignore = true,

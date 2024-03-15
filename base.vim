@@ -70,7 +70,7 @@ tnoremap jk <C-\><C-n>
 tnoremap <C-u> <C-\><C-n>:q<CR>
 
 "signcolumn
-set timeoutlen=500
+set timeoutlen=300
 set signcolumn=yes
 
 "true colors
@@ -78,16 +78,18 @@ set termguicolors
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 "vim update delay in ms
-set updatetime=300
+set updatetime=250
 
-"disable mouse
-set mouse=
+"useful for resizing panes
+set mouse=a
 
 "syntax
 syntax enable
-set number
+
 "is not useful in screenshare
-"set relativenumber
+"use :set number to disable
+set relativenumber
+
 set autoread
 set encoding=UTF-8
 "set foldmethod=syntax
@@ -120,12 +122,15 @@ set wildmenu
 "searching
 set ignorecase
 set smartcase
+set hlsearch
+nmap <Esc> <cmd>nohlsearch<cr>
 
 set cursorline
 set laststatus=2
 set scrolloff=8
 set startofline
 
+"autosave files
 augroup save_when_leave
   au BufLeave * silent! wall
 augroup END
@@ -134,7 +139,8 @@ set hidden
 set nobackup
 set nowritebackup
 set noswapfile
-set noshowmode
+set noshowmode "already in status line
+
 "automatically source .vimrc from project folder
 set exrc
 set secure

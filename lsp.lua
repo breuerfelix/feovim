@@ -41,9 +41,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 local opts = { noremap = true, silent = true }
 nmap('<leader>rd', vim.diagnostic.open_float, opts)
+nmap('<leader>rl', vim.diagnostic.setloclist, opts)
 nmap('<leader>rk', vim.diagnostic.goto_prev, opts)
 nmap('<leader>rj', vim.diagnostic.goto_next, opts)
-nmap('<leader>rl', vim.diagnostic.setloclist, opts)
 
 local lsp_signature = require('lsp_signature')
 local on_attach = function(_, bufnr)
