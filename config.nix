@@ -18,7 +18,7 @@
     gh # github cli for cmp_git
 
     # language servers
-    rnix-lsp
+    nil
     terraform-ls
     deno
     nodePackages."@prisma/language-server"

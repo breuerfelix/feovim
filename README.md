@@ -82,7 +82,7 @@ Nix flakes behave strange on unstaged files.
           tree-sitter
 
           # language servers
-          rnix-lsp
+          gopls
         ];
 
         # plugins loaded at start
