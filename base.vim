@@ -36,8 +36,7 @@ set undofile
 set undodir=~/.vim/undo
 
 "quit
-"nmap <C-u> :q<CR>
-"imap <C-u> <Esc>:q<CR>
+nmap <C-q> :q<CR>
 
 "splits
 function! WinMove(key)
