@@ -9,17 +9,16 @@ cmp.setup({
     end,
   },
   mapping = {
+    ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+    ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-u>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     }),
-    -- will be replaced while in insert mode to C-i and C-j
-    ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-    ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
   },
   sources = {
     { name = 'nvim_lsp' },
@@ -91,14 +90,6 @@ local servers = {
   rust_analyzer = {},
   kotlin_language_server = {},
   jsonnet_ls = {},
-  --helm_ls = {},
-  --yamlls = {
-    --settings = {
-      --yaml = {
-        --keyOrdering = false,
-      --},
-    --},
-  --},
   denols = {
     -- prevents clashing with tsserver
     root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),

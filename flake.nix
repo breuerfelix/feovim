@@ -8,8 +8,6 @@
     # define plugin sources from git or use package from nixpkgs instead
     earthly-vim = { url = "github:earthly/earthly.vim"; flake = false; };
     github-nvim-theme = { url = "github:projekt0n/github-nvim-theme"; flake = false; };
-    # FIXME: present in unstable
-    vim-tabby = { url = "github:tabbyml/vim-tabby"; flake = false; };
   };
 
   outputs = { self, nixpkgs, flake-utils, ... }@inputs:

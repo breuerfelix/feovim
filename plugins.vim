@@ -1,15 +1,10 @@
 "BufKill
-nmap <C-y> :BD<CR>
+"nmap <C-y> :BD<CR>
 "disable default mapping
 let g:BufKillCreateMappings = 0
 
 lua require('which-key').register({ ['<leader>c'] = { name = 'commenter' } })
 lua require('which-key').register({ ['<leader>d'] = { name = 'debugging' } })
-
-"run current buffer
-autocmd filetype python nnoremap <leader>er :VimuxRunCommand("python %")<CR>
-autocmd filetype javascript,typescript nnoremap <leader>er :VimuxRunCommand("node %")<CR>
-autocmd filetype go noremap <leader>er :VimuxRunCommand("go run .")<CR>
 
 "other
 nmap <leader>a :NvimTreeToggle<CR>
@@ -29,21 +24,6 @@ lua require('which-key').register({ ['<leader>l'] = { name = 'linting / syntax' 
 "let g:indent_blankline_use_treesitter = v:true
 
 highlight IndentBlanklineChar guifg=grey25 gui=nocombine
-
-"improve writing
-function! s:goyo_enter()
-  set nolist
-  Limelight
-endfunction
-
-function! s:goyo_leave()
-  set nolist
-  Limelight!
-endfunction
-
-noremap <silent> <leader>g :Goyo<CR>
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 "vsnip
 imap <expr> <C-l> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
@@ -81,11 +61,6 @@ call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_bo
 set wildmenu
 set wildmode=longest:list,full
 
-"vim smoothie
-nmap <C-d> <Plug>(SmoothieDownwards)
-nmap <C-f> <Plug>(SmoothieUpwards)
-let g:smoothie_no_default_mappings = 1
-
 "use single quotes in emmet
 "let g:user_emmet_settings = { 'html': { 'quote_char': "'", }, }
 let g:user_emmet_leader_key = '<C-e>'
@@ -97,14 +72,6 @@ let g:fzf_layout = { 'window': { 'border': 'sharp', 'width': 0.9, 'height': 0.6 
 "editor config
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
-let g:vimtex_view_method = 'zathura'
-let g:vimtex_compiler_method = 'generic'
-let g:vimtex_compiler_generic = {
-\ 'cmd' : 'bash run.sh',
-\ 'build_dir' : '',
-\ }
-
-nmap <leader>el :VimtexCompile<CR>
 nmap <leader>ec :Codi!!<CR>
 nmap <leader>eh <Plug>RestNvim
 lua require('which-key').register({ ['<leader>e'] = { name = 'exec' } })
@@ -115,10 +82,6 @@ let g:codi#interpreters = {
    \ 'prompt': '^\(>>>\|\.\.\.\) ',
    \ },
 \ }
-
-"disable all extensions for a minimal setup
-let g:airline_extensions = []
-let g:airline_powerline_fonts = 0
 
 "debugging
 nnoremap <silent> <leader>dr :lua require'dap'.continue()<CR>

@@ -6,34 +6,28 @@
 let mapleader = ' '
 inoremap jk <Esc>
 "scrolls through modals in insert mode
-imap <C-j> <C-n>
-imap <C-k> <C-p>
+"imap <C-j> <C-n>
+"imap <C-k> <C-p>
 
 "trailing
-noremap <C-c> <S-j>
+"noremap <C-c> <S-j>
 
 "faster scrolling
-noremap <S-j> 3jzz
-noremap <S-k> 3kzz
+"noremap <S-j> 3jzz
+"noremap <S-k> 3kzz
 
-"buffer
-nmap <C-n> :bnext<CR>
-nmap <C-p> :bprevious<CR>
-nmap <C-y> :bdelete<CR>
-map <C-t> :tabnew<CR>
+"buffer TODO find new ones
+"nmap <C-n> :bnext<CR>
+"nmap <C-p> :bprevious<CR>
+"nmap <C-y> :bdelete<CR>
 
 "inserts blank line below
-noremap <C-[> :set paste<CR>o<Esc>:set nopaste<CR>
-noremap gl $
-noremap gh 0
+"noremap gl $
+"noremap gh 0
 
 "save
 "Control-I is the same as Tab in the terminal
-nmap <silent> <leader>u :update<CR>
-nmap <silent> <C-i> :update<CR>
-nmap <silent> <Tab> :update<CR>
-"sudo tee hack, write as root
-cmap w!! w !sudo tee > /dev/null %
+nmap <leader>u :update<CR>
 set autowrite
 set autowriteall
 
@@ -42,8 +36,8 @@ set undofile
 set undodir=~/.vim/undo
 
 "quit
-nmap <C-u> :q<CR>
-imap <C-u> <Esc>:q<CR>
+"nmap <C-u> :q<CR>
+"imap <C-u> <Esc>:q<CR>
 
 "splits
 function! WinMove(key)

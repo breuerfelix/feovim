@@ -13,7 +13,7 @@
     bat
     ripgrep
     fd
-    fzf # fzf
+    fzf
     universal-ctags # vista
     gh # github cli for cmp_git
 
@@ -30,7 +30,6 @@
     nodePackages.yaml-language-server
     kotlin-language-server
     jsonnet-language-server
-    #helm-ls
 
     # debugging
     delve # golang
@@ -47,7 +46,7 @@
     cmp-path
     cmp-git
     lsp_signature-nvim
-    (plugin "vim-tabby") # ai coding assistant
+    vim-tabby
 
     # snippets are needed for many language servers
     cmp-vsnip
@@ -85,7 +84,6 @@
 
     # bars
     lualine-nvim
-    #nvim-gps # shows code context
     bufferline-nvim
     vim-bufkill
 
@@ -101,7 +99,6 @@
     wilder-nvim
 
     vim-sleuth
-    vim-smoothie
     nerdcommenter
     emmet-vim
 
@@ -123,7 +120,7 @@
   ];
 
   # plugins loaded optionally
-  optPlugins = with pkgs.vimPlugins; [ ];
+  optPlugins = [ ];
 
   neovimConfig = with pkgs.lib.strings; builtins.concatStringsSep "\n" [
     (fileContents ./base.vim)
