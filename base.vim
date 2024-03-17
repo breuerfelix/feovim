@@ -5,7 +5,6 @@
 "mappings
 let mapleader = ' '
 inoremap jk <Esc>
-vnoremap u <Esc>
 "scrolls through modals in insert mode
 imap <C-j> <C-n>
 imap <C-k> <C-p>
