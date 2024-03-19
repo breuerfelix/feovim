@@ -5,6 +5,15 @@
 "mappings
 let mapleader = ' '
 inoremap jk <Esc>
+
+"quit
+nmap <C-p> :q<CR>
+nmap <C-m> :update<CR>
+
+"jump back to and forth
+noremap <leader>o <C-o>zz
+noremap <leader>i <C-i>zz
+
 "scrolls through modals in insert mode
 "imap <C-j> <C-n>
 "imap <C-k> <C-p>
@@ -26,17 +35,12 @@ inoremap jk <Esc>
 "noremap gh 0
 
 "save
-"Control-I is the same as Tab in the terminal
-nmap <leader>u :update<CR>
 set autowrite
 set autowriteall
 
 "save undo / redo across sessions
 set undofile
 set undodir=~/.vim/undo
-
-"quit
-nmap <C-q> :q<CR>
 
 "splits
 function! WinMove(key)
@@ -136,10 +140,6 @@ set noshowmode "already in status line
 "automatically source .vimrc from project folder
 set exrc
 set secure
-
-"jump back to and forth
-noremap <leader>o <C-o>zz
-noremap <leader>i <C-i>zz
 
 "filetypes
 au BufRead,BufNewFile *.nix set filetype=nix
