@@ -7,32 +7,20 @@ let mapleader = ' '
 inoremap jk <Esc>
 
 "quit
-nmap <C-p> :q<CR>
-nmap <C-m> :update<CR>
+nmap <silent> <C-p> :q<CR>
+nmap <silent> <C-m> :update<CR>
 
 "jump back to and forth
 noremap <leader>o <C-o>zz
 noremap <leader>i <C-i>zz
 
-"scrolls through modals in insert mode
-"imap <C-j> <C-n>
-"imap <C-k> <C-p>
-
 "trailing
 "noremap <C-c> <S-j>
-
-"faster scrolling
-"noremap <S-j> 3jzz
-"noremap <S-k> 3kzz
 
 "buffer TODO find new ones
 "nmap <C-n> :bnext<CR>
 "nmap <C-p> :bprevious<CR>
 "nmap <C-y> :bdelete<CR>
-
-"inserts blank line below
-"noremap gl $
-"noremap gh 0
 
 "save
 set autowrite
@@ -84,7 +72,7 @@ syntax enable
 
 "is not useful in screenshare
 "use :set number to disable
-set relativenumber
+set number relativenumber
 
 set autoread
 set encoding=UTF-8
