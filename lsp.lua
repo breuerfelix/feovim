@@ -25,6 +25,7 @@ cmp.setup({
     { name = 'vsnip' },
     { name = 'path' },
     { name = 'cmp_git' },
+    { name = 'copilot' },
   },
 })
 
