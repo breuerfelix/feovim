@@ -46,7 +46,8 @@
     cmp-path
     cmp-git
     lsp_signature-nvim
-    vim-tabby
+    copilot-lua
+    copilot-cmp
 
     # snippets are needed for many language servers
     cmp-vsnip

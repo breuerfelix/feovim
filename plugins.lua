@@ -8,6 +8,8 @@ require('illuminate').configure()
 require('hop').setup()
 require('rest-nvim').setup()
 require('ibl').setup()
+require('copilot').setup({})
+require('copilot_cmp').setup()
 
 ---hop keybindings, easymotion like
 nmap("<leader>b", "<cmd>HopWordBC<CR>")
@@ -27,10 +29,6 @@ require('todo-comments').setup {
 -- disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
---- tabby / ai coding assistant
-vim.g.tabby_keybinding_accept = '<C-a>'
-vim.g.tabby_keybinding_trigger_or_dismiss = '<C-d>'
 
 -- highlight when yanking text
 vim.api.nvim_create_autocmd('TextYankPost', {
