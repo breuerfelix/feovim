@@ -25,12 +25,12 @@
 
         config = with config.feovim; {
           home.file = {
-            ideavim = mkIf ideavim.enabled {
+            ideavim = mkIf ideavim.enable {
               target = ".ideavimrc";
               text = fileContents ./base.vim;
             };
 
-            vscode = mkIf vscode.enabled {
+            vscode = mkIf vscode.enable {
               target = ".vscodevimrc";
               text = fileContents ./base.vim;
             };
