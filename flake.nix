@@ -16,17 +16,31 @@
         neovim = self.packages.${prev.system}.default;
       };
 
-      # home-manager module that sets the base vim file
-      # to the correct path for IdeaVim to consume
+      # home-manager module for IdeaVim integration
       ideavim = { config, lib, ... }:
         with lib;
         let cfg = config.ideavim; in
         {
-          options.ideavim.enable = mkEnableOption "IntelliJ IDEA Integration";
+          options.ideavim.enable = mkEnableOption "IntelliJ IDEA integration";
           config = mkIf cfg.enable
             {
               home.file.ideavim = {
                 target = ".ideavimrc";
+                text = fileContents ./base.vim;
+              };
+            };
+        };
+
+      # home-manager module for VSCode integration
+      vscode = { config, lib, ... }:
+        with lib;
+        let cfg = config.vscode; in
+        {
+          options.vscode.enable = mkEnableOption "VSCode integration";
+          config = mkIf cfg.enable
+            {
+              home.file.vscode = {
+                target = ".vscodevimrc";
                 text = fileContents ./base.vim;
               };
             };
