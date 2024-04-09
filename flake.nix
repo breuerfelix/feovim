@@ -16,35 +16,27 @@
         neovim = self.packages.${prev.system}.default;
       };
 
-      # home-manager module for IdeaVim integration
-      ideavim = { config, lib, ... }:
-        with lib;
-        let cfg = config.ideavim; in
-        {
-          options.ideavim.enable = mkEnableOption "IntelliJ IDEA integration";
-          config = mkIf cfg.enable
-            {
-              home.file.ideavim = {
-                target = ".ideavimrc";
-                text = fileContents ./base.vim;
-              };
-            };
+      # home-manager module for IdeaVim + VSCode integration
+      feovim = { config, lib, ... }: with lib; {
+        options.feovim = {
+          ideavim.enable = mkEnableOption "IntelliJ IDEA integration";
+          vscode.enable = mkEnableOption "VSCode integration";
         };
 
-      # home-manager module for VSCode integration
-      vscode = { config, lib, ... }:
-        with lib;
-        let cfg = config.vscode; in
-        {
-          options.vscode.enable = mkEnableOption "VSCode integration";
-          config = mkIf cfg.enable
-            {
-              home.file.vscode = {
-                target = ".vscodevimrc";
-                text = fileContents ./base.vim;
-              };
+        config = with config.feovim; {
+          home.file = {
+            ideavim = mkIf ideavim.enabled {
+              target = ".ideavimrc";
+              text = fileContents ./base.vim;
             };
+
+            vscode = mkIf vscode.enabled {
+              target = ".vscodevimrc";
+              text = fileContents ./base.vim;
+            };
+          };
         };
+      };
     } //
     flake-utils.lib.eachDefaultSystem (system:
       let
