@@ -75,7 +75,7 @@ require('fzf-lua').setup {
     ['--border'] = 'none',
   },
   files = {
-    cmd = 'fd --type f --hidden --follow --exclude .git --exclude .vim --exclude .cache --exclude vendor',
+    cmd = 'fd --type f --hidden --follow --exclude .git --exclude .vim --exclude .cache --exclude vendor --exclude node_modules',
   },
   grep = {
     rg_opts = "--hidden --column --line-number --no-heading " ..
