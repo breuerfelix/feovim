@@ -27,8 +27,8 @@
     nodePackages.bash-language-server
     dockerfile-language-server-nodejs
     gopls
-    golangci-lint-langserver
-    golangci-lint
+    #golangci-lint-langserver
+    #golangci-lint
     marksman
     nodePackages.pyright
     rust-analyzer
