@@ -84,12 +84,15 @@ local lspconfig = require('lspconfig')
 local servers = {
   prismals = {},
   gopls = {},
+  golangci_lint_ls = {},
+  bashls = {},
   nil_ls = {},
   terraformls = {},
-  texlab = {},
+  tflint = {},
+  marksman = {},
+  dockerls = {},
   pyright = {},
   rust_analyzer = {},
-  kotlin_language_server = {},
   jsonnet_ls = {},
   denols = {
     -- prevents clashing with tsserver
@@ -116,8 +119,8 @@ for key, value in pairs(servers) do
   lspconfig[key].setup {
     on_attach = on_attach,
     capabilities = capabilities,
+    -- custom settings
     settings = value.settings,
-    cmd = value.cmd,
     root_dir = value.root_dir,
   }
 end

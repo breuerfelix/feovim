@@ -18,17 +18,21 @@
     gh # github cli for cmp_git
 
     # language servers
-    nil
+    nil # nix
     terraform-ls
+    terraform
+    tflint
     deno
     nodePackages."@prisma/language-server"
+    nodePackages.bash-language-server
+    dockerfile-language-server-nodejs
     gopls
-    texlab
+    golangci-lint-langserver
+    golangci-lint
+    marksman
     nodePackages.pyright
     rust-analyzer
     sumneko-lua-language-server
-    nodePackages.yaml-language-server
-    kotlin-language-server
     jsonnet-language-server
 
     # debugging
