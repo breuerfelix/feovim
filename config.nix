@@ -26,13 +26,13 @@
     nodePackages."@prisma/language-server"
     nodePackages.bash-language-server
     dockerfile-language-server-nodejs
-    gopls
-    #golangci-lint-langserver
-    #golangci-lint
+    #gopls
+    golangci-lint-langserver
+    golangci-lint
     marksman
     nodePackages.pyright
     rust-analyzer
-    sumneko-lua-language-server
+    #sumneko-lua-language-server
     jsonnet-language-server
 
     # debugging

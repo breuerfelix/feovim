@@ -8,7 +8,12 @@ require('illuminate').configure()
 require('hop').setup()
 require('rest-nvim').setup()
 require('ibl').setup()
-require('copilot').setup({})
+require('copilot').setup({
+  filetypes = {
+    -- disable by default
+    ['*'] = false,
+  },
+})
 require('copilot_cmp').setup()
 
 ---hop keybindings, easymotion like
