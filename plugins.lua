@@ -15,6 +15,7 @@ require('copilot').setup({
   },
 })
 require('copilot_cmp').setup()
+require('leap').create_default_mappings()
 
 ---hop keybindings, easymotion like
 nmap("<leader>b", "<cmd>HopWordBC<CR>")

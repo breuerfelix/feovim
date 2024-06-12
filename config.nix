@@ -22,17 +22,18 @@
     terraform-ls
     terraform
     tflint
+    # currently broken with preact
     deno
     nodePackages."@prisma/language-server"
     nodePackages.bash-language-server
     dockerfile-language-server-nodejs
-    #gopls
+    # enable after updating and uninstall gopls from brew
+    gopls
     golangci-lint-langserver
     golangci-lint
     marksman
     nodePackages.pyright
     rust-analyzer
-    #sumneko-lua-language-server
     jsonnet-language-server
 
     # debugging
@@ -77,6 +78,7 @@
 
     # navigation
     hop-nvim
+    leap-nvim
     clever-f-vim
     nvim-tree-lua
     vista-vim

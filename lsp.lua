@@ -98,18 +98,6 @@ local servers = {
     -- prevents clashing with tsserver
     root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
   },
-  --lua_ls = {
-    --settings = {
-      --Lua = {
-        --runtime = { version = 'LuaJIT', },
-        --diagnostics = { globals = { 'vim' }, },
-        --workspace = {
-          --library = vim.api.nvim_get_runtime_file("", true),
-        --},
-        --telemetry = { enable = false, },
-      --},
-    --},
-  --},
 }
 
 local caps = vim.lsp.protocol.make_client_capabilities()

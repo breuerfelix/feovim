@@ -141,3 +141,7 @@ The philosophy behind this flake configuration is to allow for easily configurab
 
 As a result, one should never get a broken config when setting options. If setting multiple options results in a broken neovim, file an issue! Each plugin knows when another plugin which allows for smart configuration of keybindings and automatic setup of things like completion sources and languages.
 
+## TODO
+
+- inlay hints
+- plugins from neovim.io -> get plugins
