@@ -5,11 +5,6 @@
     git
     tree-sitter
 
-    # rest.nvim
-    jq # formats json
-    html-tidy # formats html
-    curl
-
     bat
     ripgrep
     fd
@@ -32,7 +27,7 @@
     golangci-lint-langserver
     golangci-lint
     marksman
-    nodePackages.pyright
+    pyright
     rust-analyzer
     jsonnet-language-server
 
@@ -108,9 +103,6 @@
     vim-sleuth
     nerdcommenter
     emmet-vim
-
-    # examples: https://github.com/rest-nvim/rest.nvim/tree/main/tests
-    rest-nvim # http client
 
     tagalong-vim
     codi-vim

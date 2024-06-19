@@ -73,7 +73,6 @@ let g:fzf_layout = { 'window': { 'border': 'sharp', 'width': 0.9, 'height': 0.6 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 nmap <leader>ec :Codi!!<CR>
-nmap <leader>eh <Plug>RestNvim
 lua require('which-key').register({ ['<leader>e'] = { name = 'exec' } })
 
 let g:codi#interpreters = {

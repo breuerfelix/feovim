@@ -6,7 +6,6 @@ require('spellsitter').setup()
 require('telescope').setup()
 require('illuminate').configure()
 require('hop').setup()
-require('rest-nvim').setup()
 require('ibl').setup()
 require('copilot').setup({
   filetypes = {
