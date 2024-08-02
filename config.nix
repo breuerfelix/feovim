@@ -10,6 +10,7 @@
     fd
     fzf
     universal-ctags # vista
+    findutils
     gh # github cli for cmp_git
 
     # language servers
@@ -78,6 +79,7 @@
     nvim-tree-lua
     vista-vim
     todo-comments-nvim
+    (plugin "telescope-repo") # built from inputs
 
     # highlights current variable with underline
     nvim-cursorline

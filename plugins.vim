@@ -3,8 +3,8 @@
 "disable default mapping
 let g:BufKillCreateMappings = 0
 
-lua require('which-key').register({ ['<leader>c'] = { name = 'commenter' } })
-lua require('which-key').register({ ['<leader>d'] = { name = 'debugging' } })
+lua require('which-key').add({ '<leader>c', group = 'commenter' })
+lua require('which-key').add({ '<leader>d', group = 'debugging' })
 
 "other
 nmap <leader>a :NvimTreeToggle<CR>
@@ -17,7 +17,7 @@ nmap <leader>lg :GrammarousCheck<CR>
 nmap <leader>lr :GrammarousReset<CR>
 nmap <leader>lt :TodoLocList<CR>
 nmap <leader>lp :echo expand('%:p')<CR>
-lua require('which-key').register({ ['<leader>l'] = { name = 'linting / syntax' } })
+lua require('which-key').add({ '<leader>l', group = 'linting / syntax' })
 
 "let g:indentLine_char = '|'
 "let g:indentLine_char = '│'
@@ -73,7 +73,7 @@ let g:fzf_layout = { 'window': { 'border': 'sharp', 'width': 0.9, 'height': 0.6 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 nmap <leader>ec :Codi!!<CR>
-lua require('which-key').register({ ['<leader>e'] = { name = 'exec' } })
+lua require('which-key').add({ '<leader>e', group = 'exec' })
 
 let g:codi#interpreters = {
 \ 'python': {
