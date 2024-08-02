@@ -79,7 +79,7 @@
     nvim-tree-lua
     vista-vim
     todo-comments-nvim
-    (plugin "telescope-repo") # built from inputs
+    (plugin "whaler")
 
     # highlights current variable with underline
     nvim-cursorline

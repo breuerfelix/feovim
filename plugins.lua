@@ -3,7 +3,6 @@ require('nvim-web-devicons').setup()
 require('colorizer').setup({})
 require('diffview').setup() -- :DiffviewOpen / DiffviewClose
 require('spellsitter').setup()
-require('telescope').setup()
 require('illuminate').configure()
 require('hop').setup()
 require('ibl').setup()
@@ -15,6 +14,25 @@ require('copilot').setup({
 })
 require('copilot_cmp').setup()
 require('leap').create_default_mappings()
+
+local telescope = require('telescope')
+telescope.setup({
+  extensions = {
+    whaler = {
+      directories = {
+        { path = "~/code", alias = "code" },
+        { path = "~/code/github", alias = "github" },
+        { path = "~/code/rtl/pspdx", alias = "devx" },
+        { path = "~/code/rtl/contract", alias = "contract" },
+        { path = "~/code/rtl/systemssq", alias = "systems" },
+      },
+      file_explorer = "nvimtree",
+    }
+  }
+})
+
+telescope.load_extension("whaler")
+vim.keymap.set("n", "<leader>p", telescope.extensions.whaler.whaler)
 
 ---hop keybindings, easymotion like
 nmap("<leader>b", "<cmd>HopWordBC<CR>")
@@ -45,6 +63,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 require('nvim-tree').setup {
+  sync_root_with_cwd = true,
   git = {
     ignore = true,
   },

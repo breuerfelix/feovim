@@ -71,7 +71,7 @@
         "flake-utils": "flake-utils",
         "github-nvim-theme": "github-nvim-theme",
         "nixpkgs": "nixpkgs",
-        "telescope-repo": "telescope-repo"
+        "whaler": "whaler"
       }
     },
     "systems": {
@@ -89,19 +89,19 @@
         "type": "github"
       }
     },
-    "telescope-repo": {
+    "whaler": {
       "flake": false,
       "locked": {
-        "lastModified": 1714044532,
-        "narHash": "sha256-m9icWnwM4Wl1PW2dLaQne5PaKbjfVEEzWxbETJJSUxw=",
-        "owner": "cljoly",
-        "repo": "telescope-repo.nvim",
-        "rev": "36720ed0ac724fc7527a6a4cf920e13164039400",
+        "lastModified": 1704281882,
+        "narHash": "sha256-1s6XGi4xIuWZv+2Q1++sdg1HvBkhR0A/4GJoMXDA+QY=",
+        "owner": "SalOrak",
+        "repo": "whaler",
+        "rev": "9e0b67e36250cb80e679563adcd4b7451eae26b2",
         "type": "github"
       },
       "original": {
-        "owner": "cljoly",
-        "repo": "telescope-repo.nvim",
+        "owner": "SalOrak",
+        "repo": "whaler",
         "type": "github"
       }
     }
