@@ -3,6 +3,7 @@
   extraPackages = with pkgs; [
     # utilities
     git
+    lazygit
     tree-sitter
 
     bat
@@ -97,6 +98,7 @@
 
     nvim-colorizer-lua
     vim-fugitive
+    lazygit-nvim
     diffview-nvim
 
     # wildmenu for commands

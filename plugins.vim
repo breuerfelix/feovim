@@ -10,6 +10,7 @@ lua require('which-key').add({ '<leader>d', group = 'debugging' })
 nmap <leader>a :NvimTreeToggle<CR>
 nmap <leader>t :Vista!!<CR>
 nmap <leader>s :FzfLua grep search=""<CR>
+nmap <leader>g :LazyGit<CR>
 nmap <leader>ln :noh<CR>
 nmap <leader>ls :s/"/'/g<bar>:noh<CR>
 nmap <leader>lc :%s/\t/  /g<CR>
