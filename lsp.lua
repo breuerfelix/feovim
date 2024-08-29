@@ -98,6 +98,11 @@ local servers = {
     -- prevents clashing with tsserver
     root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
   },
+  tsserver = {
+    -- prevents clashing with tsserver
+    root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json'),
+    single_file_support = false,
+  },
 }
 
 local caps = vim.lsp.protocol.make_client_capabilities()
