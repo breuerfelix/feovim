@@ -11,7 +11,7 @@ nix run .#
 
 Run anywhere (if nix is installed):
 ```bash
-nix run github:breuerfelix/feovim# .
+nix run "github:breuerfelix/feovim#" .
 ```
 
 As an overlay:
