@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # define plugin sources from git or use package from nixpkgs instead
     earthly-vim = { url = "github:earthly/earthly.vim"; flake = false; };
@@ -11,7 +12,7 @@
     whaler = { url = "github:SalOrak/whaler"; flake = false; };
   };
 
-  outputs = { self, nixpkgs, flake-utils, ... }@inputs:
+  outputs = { self, nixpkgs, flake-utils, nixpkgs-unstable, ... }@inputs:
     {
       overlay = final: prev: {
         neovim = self.packages.${prev.system}.default;
@@ -46,6 +47,8 @@
           config = { allowUnfree = true; };
         };
 
+        unstable = import nixpkgs-unstable { inherit system; };
+
         # installs a vim plugin from git
         plugin = with pkgs; repo: vimUtils.buildVimPlugin {
           pname = "${lib.strings.sanitizeDerivationName repo}";
@@ -53,7 +56,7 @@
           src = builtins.getAttr repo inputs;
         };
 
-        config = import ./config.nix { inherit pkgs plugin; };
+        config = import ./config.nix { inherit pkgs plugin unstable; };
       in
       with config; with pkgs; rec {
         apps.default = flake-utils.lib.mkApp {

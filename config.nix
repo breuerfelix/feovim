@@ -1,4 +1,4 @@
-{ pkgs, plugin }: {
+{ pkgs, unstable, plugin }: {
   # binaries that should be added to neovims PATH
   extraPackages = with pkgs; [
     # utilities
@@ -24,7 +24,6 @@
     nodePackages."@prisma/language-server"
     nodePackages.bash-language-server
     dockerfile-language-server-nodejs
-    # enable after updating and uninstall gopls from brew
     gopls
     golangci-lint-langserver
     golangci-lint
@@ -34,6 +33,7 @@
     jsonnet-language-server
     typescript-language-server
     typescript
+    unstable.harper # grammar checker
 
     # debugging
     delve # golang
