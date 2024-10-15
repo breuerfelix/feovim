@@ -94,6 +94,7 @@ local servers = {
   rust_analyzer = {},
   jsonnet_ls = {},
   ruff = {},
+  pyright = {},
   denols = {
     -- prevents clashing with tsserver
     root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),

@@ -19,6 +19,7 @@
     terraform-ls
     terraform
     tflint
+    pyright
     deno # currently broken with preact
     nodePackages."@prisma/language-server"
     nodePackages.bash-language-server
