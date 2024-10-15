@@ -91,10 +91,9 @@ local servers = {
   tflint = {},
   marksman = {},
   dockerls = {},
-  pyright = {},
   rust_analyzer = {},
   jsonnet_ls = {},
-  harper_ls = {},
+  ruff = {},
   denols = {
     -- prevents clashing with tsserver
     root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),

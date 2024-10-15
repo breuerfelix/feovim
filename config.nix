@@ -19,21 +19,19 @@
     terraform-ls
     terraform
     tflint
-    # currently broken with preact
-    deno
+    deno # currently broken with preact
     nodePackages."@prisma/language-server"
     nodePackages.bash-language-server
     dockerfile-language-server-nodejs
     gopls
     golangci-lint-langserver
     golangci-lint
-    marksman
-    pyright
+    marksman # markdown
     rust-analyzer
     jsonnet-language-server
     typescript-language-server
     typescript
-    unstable.harper # grammar checker
+    ruff # python
 
     # debugging
     delve # golang
