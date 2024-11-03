@@ -29,11 +29,13 @@
           home.file = {
             ideavim = mkIf ideavim.enable {
               target = ".ideavimrc";
+              # TODO auto import all .vim files
               text = fileContents ./base.vim;
             };
 
             vscode = mkIf vscode.enable {
               target = ".vscodevimrc";
+              # TODO auto import all .vim files
               text = fileContents ./base.vim;
             };
           };
@@ -56,28 +58,58 @@
           src = builtins.getAttr repo inputs;
         };
 
-        config = import ./config.nix { inherit pkgs plugin unstable; };
+        # TODO auto import all nix files except flake.nix itself
+        files = [
+          ./lsp.nix
+          ./syntax.nix
+          ./completion.nix
+          ./ui.nix
+          ./tree.nix
+          ./telescope.nix
+        ];
+        plugins = map (name: import name { inherit pkgs plugin unstable; }) files;
+        binaries = map (x: x.binaries) plugins;
+        lazySpec = builtins.concatStringsSep "\n" (map (x: x.lazy) plugins);
+
       in
-      with config; with pkgs; rec {
+      with pkgs; rec {
         apps.default = flake-utils.lib.mkApp {
           drv = packages.default;
           exePath = "/bin/nvim";
         };
 
-        packages.default = wrapNeovim neovim-unwrapped {
+        packages.default = wrapNeovimUnstable neovim-unwrapped {
           viAlias = true;
           vimAlias = true;
-          withNodeJs = true;
-          withPython3 = true;
-          withRuby = true;
-          extraMakeWrapperArgs = ''--prefix PATH : "${lib.makeBinPath extraPackages}"'';
-          configure = {
-            customRC = neovimConfig;
-            packages.myVimPackage = with vimPlugins; {
-              start = startPlugins;
-              opt = optPlugins;
-            };
-          };
+          # use unique to filter out duplicates
+          wrapperArgs = with lib; ''--prefix PATH : "${makeBinPath (lists.unique (lists.flatten binaries))}"'';
+          # only lazy is needed, it handles the rest
+          plugins = with pkgs.vimPlugins; [ lazy-nvim ];
+          luaRcContent =
+            # lua
+            ''
+              -- i want my basics to be in vimscript
+              -- they are used by vscode and intellij aswell
+              -- TODO auto import all .vim files
+              vim.cmd([[
+                ${builtins.readFile ./base.vim}
+              ]])
+
+              -- TODO: maybe also allow non lazy lua config?
+              ${builtins.readFile ./base.lua}
+
+              require("lazy").setup({
+                -- disable all update / install features
+                -- this is handled by nix
+                rocks = { enabled = false },
+                pkg = { enabled = false },
+                install = { missing = false },
+                change_detection = { enabled = false },
+                spec = {
+                  ${lazySpec}
+                },
+              })
+            '';
         };
       }
     );

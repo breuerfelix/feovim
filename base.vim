@@ -4,18 +4,16 @@
 
 "mappings
 let mapleader = ' '
+let maplocalleader = '\\'
 inoremap jk <Esc>
 
-"quit
-nmap <silent> <C-p> :q<CR>
-nmap <silent> <C-m> :update<CR>
+"file handling
+nmap <silent> <C-e> :q<CR>
+nmap <silent> <C-y> :update<CR>
 
 "jump back to and forth
 noremap <leader>o <C-o>zz
 noremap <leader>i <C-i>zz
-
-"trailing
-"noremap <C-c> <S-j>
 
 "buffer TODO find new ones
 "nmap <C-n> :bnext<CR>
@@ -68,7 +66,8 @@ set updatetime=250
 set mouse=a
 
 "syntax
-syntax enable
+"treesitter will handle this
+syntax off
 
 "is not useful in screenshare
 "use :set number to disable
@@ -85,10 +84,10 @@ set clipboard=unnamedplus
 set conceallevel=0
 
 "toggle invisible characters
-set list
-set listchars=tab:→\ ,eol:¬,trail:~,extends:❯,precedes:❮,space:␣
+"set list
+"set listchars=tab:→\ ,eol:¬,trail:~,extends:❯,precedes:❮,space:␣
 "set listchars=eol:¬,trail:~,extends:❯,precedes:❮
-set showbreak=↪
+"set showbreak=↪
 
 "default for vim sleuth
 set expandtab
@@ -107,7 +106,6 @@ set wildmenu
 set ignorecase
 set smartcase
 set hlsearch
-nmap <Esc> <cmd>nohlsearch<cr>
 
 set cursorline
 set laststatus=2
@@ -125,10 +123,11 @@ set nowritebackup
 set noswapfile
 set noshowmode "already in status line
 
-"automatically source .vimrc from project folder
-set exrc
-set secure
-
 "filetypes
-au BufRead,BufNewFile *.nix set filetype=nix
+"au BufRead,BufNewFile *.nix set filetype=nix " TODO check if still needed
 au BufRead,BufNewFile *.libsonnet set filetype=jsonnet
+
+"removes any highlight group
+nmap <leader>ln :noh<CR>
+"prints path of current file
+nmap <leader>lp :echo expand('%:p')<CR>
