@@ -15,6 +15,11 @@ nmap <silent> <C-y> :update<CR>
 noremap <leader>o <C-o>zz
 noremap <leader>i <C-i>zz
 
+"removes any highlight group
+nmap <leader>ln :noh<CR>
+"prints path of current file
+nmap <leader>lp :echo expand('%:p')<CR>
+
 "buffer TODO find new ones
 "nmap <C-n> :bnext<CR>
 "nmap <C-p> :bprevious<CR>
@@ -55,9 +60,14 @@ tnoremap <C-u> <C-\><C-n>:q<CR>
 set timeoutlen=300
 set signcolumn=yes
 
+" TODO remove since auto detected
 "true colors
 set termguicolors
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+"batch ui updates
+set termsync
+" TODO stop remove
 
 "vim update delay in ms
 set updatetime=250
@@ -66,8 +76,7 @@ set updatetime=250
 set mouse=a
 
 "syntax
-"treesitter will handle this
-syntax off
+syntax on
 
 "is not useful in screenshare
 "use :set number to disable
@@ -79,9 +88,6 @@ set encoding=UTF-8
 
 "uses system clipboard
 set clipboard=unnamedplus
-
-"disable pre rendering of some things like ```
-set conceallevel=0
 
 "toggle invisible characters
 "set list
@@ -98,19 +104,14 @@ set shiftwidth=2
 set splitbelow
 set splitright
 
-"in house fuzzy finder
-set path+=**
-set wildmenu
-
 "searching
 set ignorecase
 set smartcase
 set hlsearch
 
+"highlight current line after timeout
 set cursorline
-set laststatus=2
 set scrolloff=8
-set startofline
 
 "autosave files
 augroup save_when_leave
@@ -121,13 +122,6 @@ set hidden
 set nobackup
 set nowritebackup
 set noswapfile
-set noshowmode "already in status line
 
 "filetypes
-"au BufRead,BufNewFile *.nix set filetype=nix " TODO check if still needed
 au BufRead,BufNewFile *.libsonnet set filetype=jsonnet
-
-"removes any highlight group
-nmap <leader>ln :noh<CR>
-"prints path of current file
-nmap <leader>lp :echo expand('%:p')<CR>
