@@ -1,11 +1,11 @@
-{ pkgs, ... }: {
+{ pkgs, unstable, ... }: {
   binaries = with pkgs; [
     nil # nix
     terraform-ls
     terraform
     tflint
     pyright
-    deno # currently broken with preact
+    unstable.deno # currently broken with preact
     nodePackages."@prisma/language-server"
     nodePackages.bash-language-server
     dockerfile-language-server-nodejs
