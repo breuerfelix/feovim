@@ -8,6 +8,7 @@
 
     # define plugin sources from git or use package from nixpkgs instead
     whaler = { url = "github:SalOrak/whaler"; flake = false; };
+    inlay-hints = { url = "github:MysticalDevil/inlay-hints.nvim"; flake = false; };
   };
 
   outputs = { self, nixpkgs, flake-utils, nixpkgs-unstable, ... }@inputs:

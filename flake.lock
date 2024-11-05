@@ -18,6 +18,22 @@
         "type": "github"
       }
     },
+    "inlay-hints": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1724405543,
+        "narHash": "sha256-DZVtFAUK9c8GInp+JdCQ1BKe0dkAheHKI67oxdMmA24=",
+        "owner": "MysticalDevil",
+        "repo": "inlay-hints.nvim",
+        "rev": "af84dee42cd118af6d592b06c1c0e45d6432a6c0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MysticalDevil",
+        "repo": "inlay-hints.nvim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1730101162,
@@ -52,6 +68,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "inlay-hints": "inlay-hints",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "whaler": "whaler"

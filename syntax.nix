@@ -78,5 +78,28 @@
           vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
         end
       },
+      {
+        dir = "${whitespace-nvim}",
+        name = "whitespace",
+        event = "VeryLazy",
+        config = function ()
+          local whitespace = require("whitespace-nvim")
+          whitespace.setup({
+            ignored_filetypes = {
+              'TelescopePrompt',
+              -- ignore results aswell for smart-open
+              -- https://github.com/johnfrankmorgan/whitespace.nvim/issues/14
+              'TelescopeResults',
+              -- trailing whitespace is used for linebreaks
+              'markdown',
+              'Trouble',
+              'help',
+              'dashboard',
+            },
+          })
+
+          vim.keymap.set('n', '<Leader>t', whitespace.trim)
+        end
+      },
     '';
 }

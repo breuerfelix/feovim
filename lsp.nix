@@ -1,4 +1,4 @@
-{ pkgs, unstable, ... }: {
+{ pkgs, unstable, plugin, ... }: {
   binaries = with pkgs; [
     nil # nix
     terraform-ls
@@ -85,11 +85,11 @@
             ruff = {},
             pyright = {},
             denols = {
-              -- prevents clashing with tsserver
+              -- prevents clashing with ts_ls
               root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
             },
             ts_ls = {
-              -- prevents clashing with tsserver
+              -- prevents clashing with denols
               root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json'),
               single_file_support = false,
             },
@@ -99,28 +99,14 @@
             lspconfig[key].setup(value)
           end
 
-          -- codelens
-          -- TODO: test this
-          vim.api.nvim_create_autocmd({"BufEnter", "CursorHold", "InsertLeave"}, {
-            buffer = 0,
-            callback = function(event)
-              vim.lsp.codelens.refresh({ bufnr = event.buf })
-            end
-          })
-
-          -- inlay hints
-          -- TODO: test this
-          vim.api.nvim_create_autocmd('LspAttach', {
-            desc = 'Inlay Hints',
-            callback = function(args)
-              local client = vim.lsp.get_client_by_id(args.data.client_id)
-
-              if client.supports_method("textDocument/inlayHint") or client.server_capabilities.inlayHintProvider then
-                vim.lsp.inlay_hint(args.buf, true)
-              end
-            end,
-          })
         end,
+      },
+      {
+        dir = "${plugin("inlay-hints")}",
+        event = "LspAttach",
+        config = function()
+          require("inlay-hints").setup()
+        end
       },
     '';
 }
