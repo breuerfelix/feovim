@@ -1,11 +1,10 @@
 { pkgs, ... }: {
-  binaries = with pkgs; [
-    tree-sitter
-  ];
+  # tree-sitter binary is not needed
+  binaries = [];
 
   lazy = with pkgs.vimPlugins; let
     grammarsPath = pkgs.symlinkJoin {
-      name = "nvim-treesitter-parsers";
+      name = "nvim-treesitter-grammars";
       paths = nvim-treesitter.withAllGrammars.dependencies;
     }; in 
     # lua 
@@ -73,10 +72,10 @@
         dir = "${leap-nvim}",
         name = "leap",
         -- plugin lazy loads itself
-        config = function ()
-          vim.keymap.set('n', 's', '<Plug>(leap)')
-          vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
-        end
+        keys = {
+          { "s", "<Plug>(leap)", desc = "global leap" },
+          { "S", "<Plug>(leap-from-window)", desc = "leap from window" },
+        },
       },
       {
         dir = "${whitespace-nvim}",

@@ -1,5 +1,8 @@
 { pkgs, ... }: {
-  binaries = [];
+  binaries = with pkgs; [
+    lazygit
+  ];
+
   lazy = with pkgs.vimPlugins;
     # lua 
     ''
@@ -56,6 +59,21 @@
         dir = "${diffview-nvim}",
         name = "diffview",
         cmd = "DiffViewOpen",
+      },
+      {
+        dir = "${lazygit-nvim}",
+        name = "lazygit",
+        lazy = true,
+        cmd = {
+          "LazyGit",
+          "LazyGitConfig",
+          "LazyGitCurrentFile",
+          "LazyGitFilter",
+          "LazyGitFilterCurrentFile",
+        },
+        keys = {
+            { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+        },
       },
     '';
 }

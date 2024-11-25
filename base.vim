@@ -52,10 +52,6 @@ noremap <silent> <C-j> :call WinMove('j')<CR>
 noremap <silent> <C-k> :call WinMove('k')<CR>
 noremap <silent> <C-l> :call WinMove('l')<CR>
 
-"terminal
-tnoremap jk <C-\><C-n>
-tnoremap <C-u> <C-\><C-n>:q<CR>
-
 "signcolumn
 set timeoutlen=300
 set signcolumn=yes
@@ -125,3 +121,7 @@ set noswapfile
 
 "filetypes
 au BufRead,BufNewFile *.libsonnet set filetype=jsonnet
+
+"remove "how to disable mouse" menu
+aunmenu PopUp.How-to\ disable\ mouse
+aunmenu PopUp.-1-

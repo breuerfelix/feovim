@@ -102,6 +102,7 @@
         end,
       },
       {
+        -- TODO: enable inlay hints in lsp
         dir = "${plugin("inlay-hints")}",
         event = "LspAttach",
         config = function()
