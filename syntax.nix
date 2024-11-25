@@ -6,8 +6,8 @@
     grammarsPath = pkgs.symlinkJoin {
       name = "nvim-treesitter-grammars";
       paths = nvim-treesitter.withAllGrammars.dependencies;
-    }; in 
-    # lua 
+    }; in
+    # lua
     ''
       {
         dir = "${catppuccin-nvim}",
@@ -28,7 +28,8 @@
         dir = "${nvim-treesitter}",
         name = "nvim-treesitter",
         config = function ()
-          vim.opt.runtimepath:prepend("${grammarsPath}")
+          vim.opt.runtimepath:append("${nvim-treesitter}")
+          vim.opt.runtimepath:append("${grammarsPath}")
           require("nvim-treesitter.configs").setup {
             -- they are managed by nix
             auto_install = false,
