@@ -21,7 +21,7 @@
   ];
 
   lazy = with pkgs.vimPlugins;
-    # lua 
+    # lua
     ''
       {
         dir = "${nvim-lspconfig}",
@@ -64,7 +64,8 @@
               vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
               vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
 
-              vim.keymap.set('n', '<leader>ff', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+              -- handled by conform
+              -- vim.keymap.set('n', '<leader>fl', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
               vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
               vim.keymap.set('n', '<leader>ra', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
             end,

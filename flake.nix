@@ -65,6 +65,7 @@
           ./ui.nix
           ./tree.nix
           ./telescope.nix
+          ./formatting.nix
         ];
         plugins = map (name: import name { inherit pkgs plugin unstable; }) files;
         binaries = map (x: x.binaries) plugins;

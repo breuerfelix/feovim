@@ -2,7 +2,7 @@
   binaries = [];
 
   lazy = with pkgs.vimPlugins;
-    # lua 
+    # lua
     ''
       {
         dir = "${nvim-autopairs}",
