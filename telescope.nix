@@ -6,7 +6,7 @@
   ];
 
   lazy = with pkgs.vimPlugins;
-    # lua 
+    # lua
     ''
       {
         dir = "${plenary-nvim}",

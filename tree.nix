@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   binaries = [];
   lazy = with pkgs.vimPlugins;
-    # lua 
+    # lua
     ''
       {
         dir = "${nvim-tree-lua}",

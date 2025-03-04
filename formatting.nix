@@ -1,4 +1,4 @@
-{ pkgs, unstable, plugin, ... }: {
+{ pkgs, ... }: {
   binaries = with pkgs; [
     black
     ruff

@@ -4,7 +4,7 @@
   ];
 
   lazy = with pkgs.vimPlugins;
-    # lua 
+    # lua
     ''
       {
         dir = "${nvim-web-devicons}",
