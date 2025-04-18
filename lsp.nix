@@ -6,7 +6,6 @@
     tflint
     pyright
     unstable.deno # currently broken with preact
-    nodePackages."@prisma/language-server"
     nodePackages.bash-language-server
     dockerfile-language-server-nodejs
     gopls
@@ -72,7 +71,6 @@
           })
 
           local servers = {
-            prismals = {},
             gopls = {},
             golangci_lint_ls = {},
             bashls = {},
