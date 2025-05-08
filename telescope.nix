@@ -40,6 +40,18 @@
         config = function ()
           local telescope = require('telescope')
           telescope.setup({
+            pickers = {
+              find_files = {
+                hidden = true
+              },
+              grep_string = {
+                additional_args = { '--hidden' }
+              },
+              live_grep = {
+                additional_args = { '--hidden' },
+                file_ignore_patterns = { '.git' }
+              }
+            },
             extensions = {
               whaler = {
                 directories = {
@@ -57,7 +69,7 @@
           telescope.load_extension("fzy_native")
 
           local builtin = require('telescope.builtin')
-          -- lets test smart-open
+          -- using smart_open instead
           --vim.keymap.set('n', ';', builtin.find_files, { desc = 'Telescope find files' })
           vim.keymap.set('n', '<leader>s', builtin.live_grep, { desc = 'Telescope live grep' })
           vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
