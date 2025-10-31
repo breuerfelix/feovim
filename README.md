@@ -145,3 +145,5 @@ As a result, one should never get a broken config when setting options. If setti
 
 - inlay hints
 - plugins from neovim.io -> get plugins
+- migrate to blink.cmp
+- how to use ai in neovim
