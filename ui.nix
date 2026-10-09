@@ -61,6 +61,18 @@
         cmd = "DiffViewOpen",
       },
       {
+        dir = "${codediff-nvim}",
+        name = "codediff",
+        cmd = "CodeDiff",
+        dependencies = {
+          {
+            dir = "${nui-nvim}",
+            name = "nui-nvim",
+          },
+        },
+        opts = {},
+      },
+      {
         dir = "${lazygit-nvim}",
         name = "lazygit",
         lazy = true,
