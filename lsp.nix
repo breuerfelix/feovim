@@ -6,8 +6,8 @@
     tflint
     pyright
     unstable.deno # currently broken with preact
-    nodePackages.bash-language-server
-    dockerfile-language-server-nodejs
+    bash-language-server
+    dockerfile-language-server
     gopls
     golangci-lint-langserver
     golangci-lint
@@ -31,23 +31,14 @@
           -- Reserve a space in the gutter
           vim.opt.signcolumn = 'yes'
 
-          local lspconfig = require('lspconfig')
-
-          -- Add cmp_nvim_lsp capabilities settings to lspconfig
-          -- This should be executed before you configure any language server
-          local lspconfig_defaults = lspconfig.util.default_config
-          lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-            'force',
-            lspconfig_defaults.capabilities,
-            vim.lsp.protocol.make_client_capabilities(),
-            require('cmp_nvim_lsp').default_capabilities()
-          )
-
-          -- TODO
-          --nmap('<leader>rd', vim.diagnostic.open_float, opts)
-          --nmap('<leader>rl', vim.diagnostic.setloclist, opts)
-          --nmap('<leader>rk', vim.diagnostic.goto_prev, opts)
-          --nmap('<leader>rj', vim.diagnostic.goto_next, opts)
+          -- Add cmp_nvim_lsp capabilities settings globally to all LSP servers
+          vim.lsp.config('*', {
+            capabilities = vim.tbl_deep_extend(
+              'force',
+              vim.lsp.protocol.make_client_capabilities(),
+              require('cmp_nvim_lsp').default_capabilities()
+            ),
+          })
 
           -- keybindings
           vim.api.nvim_create_autocmd('LspAttach', {
@@ -63,51 +54,50 @@
               vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
               vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
 
-              -- handled by conform
-              -- vim.keymap.set('n', '<leader>fl', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+              -- native inlay hints
+              if vim.lsp.inlay_hint then
+                vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+              end
               vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
               vim.keymap.set('n', '<leader>ra', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
             end,
           })
 
+          vim.lsp.config('nil_ls', {
+            settings = {
+              ['nil'] = {
+                nix = {
+                  flake = {
+                    autoArchive = false,
+                  },
+                },
+              },
+            },
+          })
+
           local servers = {
-            gopls = {},
-            golangci_lint_ls = {},
-            bashls = {},
-            nil_ls = {},
-            terraformls = {},
-            tflint = {},
-            marksman = {},
-            dockerls = {},
-            rust_analyzer = {},
-            jsonnet_ls = {},
-            ruff = {},
-            pyright = {},
-            gdscript = {},
-            denols = {
-              -- prevents clashing with ts_ls
-              root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
-            },
-            ts_ls = {
-              -- prevents clashing with denols
-              root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json'),
-              single_file_support = false,
-            },
+            'gopls',
+            'golangci_lint_ls',
+            'bashls',
+            'nil_ls',
+            'terraformls',
+            'tflint',
+            'marksman',
+            'dockerls',
+            'rust_analyzer',
+            'jsonnet_ls',
+            'ruff',
+            'pyright',
+            'gdscript',
+            'denols',
+            'ts_ls',
           }
 
-          for key, value in pairs(servers) do
-            lspconfig[key].setup(value)
+          for _, server in ipairs(servers) do
+            vim.lsp.enable(server)
           end
 
         end,
-      },
-      {
-        -- TODO: enable inlay hints in lsp
-        dir = "${plugin("inlay-hints")}",
-        event = "LspAttach",
-        config = function()
-          require("inlay-hints").setup()
-        end
       },
     '';
 }

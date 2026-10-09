@@ -8,13 +8,12 @@
 
     # define plugin sources from git or use package from nixpkgs instead
     whaler = { url = "github:SalOrak/whaler"; flake = false; };
-    inlay-hints = { url = "github:MysticalDevil/inlay-hints.nvim"; flake = false; };
   };
 
   outputs = { self, nixpkgs, flake-utils, nixpkgs-unstable, ... }@inputs:
     {
       overlay = final: prev: {
-        neovim = self.packages.${prev.system}.default;
+        neovim = self.packages.${prev.stdenv.hostPlatform.system}.default;
       };
 
       # home-manager module for IdeaVim + VSCode integration
@@ -55,6 +54,7 @@
           pname = "${lib.strings.sanitizeDerivationName repo}";
           version = "main";
           src = builtins.getAttr repo inputs;
+          doCheck = false;
         };
 
         # TODO auto import all nix files except flake.nix itself

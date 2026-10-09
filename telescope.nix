@@ -36,7 +36,6 @@
             name = "smart-open",
           },
         },
-        event = "VeryLazy",
         config = function ()
           local telescope = require('telescope')
           telescope.setup({

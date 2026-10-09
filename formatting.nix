@@ -3,8 +3,8 @@
     black
     ruff
     isort
-    nodePackages.prettier
-    nixfmt-rfc-style
+    prettier
+    nixfmt
   ];
 
   lazy = with pkgs.vimPlugins;

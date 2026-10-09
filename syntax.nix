@@ -25,22 +25,22 @@
         end
       },
       {
-        dir = "${nvim-treesitter}",
-        name = "nvim-treesitter",
+        dir = "${grammarsPath}",
+        name = "treesitter-grammars",
+        lazy = false,
+        priority = 1000,
         config = function ()
-          vim.opt.runtimepath:append("${nvim-treesitter}")
           vim.opt.runtimepath:append("${grammarsPath}")
-          require("nvim-treesitter.configs").setup {
-            -- they are managed by nix
-            auto_install = false,
 
-            highlight = {
-              enable = true,
-              additional_vim_regex_highlighting = false,
-            },
-            indent = { enable = true },
-          }
-        end
+          vim.api.nvim_create_autocmd("FileType", {
+            callback = function(ev)
+              pcall(vim.treesitter.start, ev.buf)
+            end,
+          })
+          if vim.bo.filetype ~= "" then
+            pcall(vim.treesitter.start)
+          end
+        end,
       },
       {
         -- TODO: check if this can be lazy loaded
@@ -68,15 +68,6 @@
       {
         dir = "${vim-sleuth}",
         name = "sleuth",
-      },
-      {
-        dir = "${leap-nvim}",
-        name = "leap",
-        -- plugin lazy loads itself
-        keys = {
-          { "s", "<Plug>(leap)", desc = "global leap" },
-          { "S", "<Plug>(leap-from-window)", desc = "leap from window" },
-        },
       },
       {
         dir = "${whitespace-nvim}",

@@ -31,7 +31,6 @@ set autowriteall
 
 "save undo / redo across sessions
 set undofile
-set undodir=~/.vim/undo
 
 "splits
 function! WinMove(key)
@@ -56,14 +55,8 @@ noremap <silent> <C-l> :call WinMove('l')<CR>
 set timeoutlen=300
 set signcolumn=yes
 
-" TODO remove since auto detected
 "true colors
 set termguicolors
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-"batch ui updates
-set termsync
-" TODO stop remove
 
 "vim update delay in ms
 set updatetime=250
@@ -79,7 +72,6 @@ syntax on
 set number relativenumber
 
 set autoread
-set encoding=UTF-8
 "set foldmethod=syntax
 
 "uses system clipboard
@@ -121,7 +113,3 @@ set noswapfile
 
 "filetypes
 au BufRead,BufNewFile *.libsonnet set filetype=jsonnet
-
-"remove "how to disable mouse" menu
-aunmenu PopUp.How-to\ disable\ mouse
-aunmenu PopUp.-1-

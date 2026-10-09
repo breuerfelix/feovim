@@ -18,29 +18,13 @@
         "type": "github"
       }
     },
-    "inlay-hints": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1750224557,
-        "narHash": "sha256-Hm5cppwgVYeJ+SfQMEi1xTPOITHBVSXhgdr3VclsS3g=",
-        "owner": "MysticalDevil",
-        "repo": "inlay-hints.nvim",
-        "rev": "990e1f96699b8293b6665b9e73b16128c66684e6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "MysticalDevil",
-        "repo": "inlay-hints.nvim",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1756795769,
-        "narHash": "sha256-1SKI2/04vVW/7URJs5M56bbjlh/UA/i01IKqTLsuPwY=",
+        "lastModified": 1791469644,
+        "narHash": "sha256-O5OfEid2oDN30eFMKu5KNyYCm2+H7J5lS5e7SMj0EqA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "0e0a18f576aa37127085f19e87dd19263f7eba9a",
+        "rev": "62c4d51c2c37d4743f773715cf8f2f8b0b00b195",
         "type": "github"
       },
       "original": {
@@ -51,11 +35,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1756696532,
-        "narHash": "sha256-6FWagzm0b7I/IGigOv9pr6LL7NQ86mextfE8g8Q6HBg=",
+        "lastModified": 1791366222,
+        "narHash": "sha256-o0N4g6uSOIppU7CGToNvGlMf5vC+B6O6ukFHKY/TKOY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "58dcbf1ec551914c3756c267b8b9c8c86baa1b2f",
+        "rev": "39ad350a0602fa0a58a544344e3e9187526ea45c",
         "type": "github"
       },
       "original": {
@@ -68,7 +52,6 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "inlay-hints": "inlay-hints",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "whaler": "whaler"
@@ -92,11 +75,11 @@
     "whaler": {
       "flake": false,
       "locked": {
-        "lastModified": 1745698008,
-        "narHash": "sha256-dgMqfoA7BUzJ/6t+oRPIS4gEElc9PVNKhFrbsZUs/Pw=",
+        "lastModified": 1782147441,
+        "narHash": "sha256-hAp/PIchMYUWcMmqfntdBwvfWS60M1HzXwf9yMZsLag=",
         "owner": "SalOrak",
         "repo": "whaler",
-        "rev": "b3a4257f6225a9a6c42f33b56ca316325e395f22",
+        "rev": "e992bf222eff66737701698dc938b476c6e66687",
         "type": "github"
       },
       "original": {
